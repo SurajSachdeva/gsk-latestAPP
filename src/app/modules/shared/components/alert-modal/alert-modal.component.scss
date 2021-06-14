@@ -1,0 +1,35 @@
+.modal-header,
+.modal-footer {
+    border: none;
+}
+
+.modal-header {
+    font-size: 24px;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    display: block;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 6px;
+    top: -1px;
+    font-size: 37px;
+}
+
+.btn {
+    background-color: #F36633;
+    color: white;
+    border: none;
+    padding: 10px 45px;
+}
+
+.message {
+    text-align: left;
+    font-size: 17px;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}

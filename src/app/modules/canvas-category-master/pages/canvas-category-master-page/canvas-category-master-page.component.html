@@ -1,0 +1,61 @@
+<div class="main-wrapper">
+
+    <div class="breadcrum-btns">
+        <div class="container">
+            <div class="inner-breadcrum-btns">
+
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="las la-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#">Master</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Canvas Category Master</li>
+                </ol>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="white-bg">
+
+            <div class="dasboard-table">
+
+                <div class="table-responsive">
+
+                    <table class="table table-fixed">
+                        <thead class="gray">
+                            <tr>
+                                <th>Secondary Channel</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let item of data">
+                                <td>{{ item.Secondary_Channel }}</td>
+                                <td>{{ item.Category }}</td>
+                                <td>
+                                    <img (click)="onEdit(item)" src="./assets/images/edit.png" alt="">
+                                    <img (click)="onDelete(item)" class="ml-2" src="./assets/images/delete.png" alt="">
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+            <div class="submit-btn">
+                <button type="button" (click)="onAdd()" class="common-btn gray"><i class="las la-plus"></i>Add
+                    Canvas Category</button>
+                <button type="button" (click)="onDownload()" class="common-btn"><i class="las la-download"></i>
+                    Download</button>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

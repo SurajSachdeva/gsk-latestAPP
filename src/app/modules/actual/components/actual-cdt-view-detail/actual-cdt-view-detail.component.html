@@ -1,0 +1,110 @@
+<div class="main-wrapper">
+
+    <app-breadcrumb [data]="breadCrumbData" [showButtons]="false"></app-breadcrumb>
+
+    <div class="container">
+        <div class="white-bg">
+            <div class="inner-content">
+                <form class="common-form" id="" method="get">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Month</label>
+                                    <p>{{ gtData?.Month_Name }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>DB Code </label>
+                                    <p>{{ gtData?.Distributor_Code }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>DB Name</label>
+                                    <p>{{ gtData?.Distributor_Name }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="customers-type">City</label>
+                                    <p>{{ gtData?.City }}</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Rate</label>
+                                    <p>{{ gtData?.Rate }}%</p>
+                                </div>
+                            </div>
+
+                             <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Sales</label>
+                                    <p>{{ gtData?.Sales | number}}</p>
+                                </div>
+                            </div>
+                           
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Channel</label>
+                                    <p>{{ gtData?.Channel }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Provision</label>
+                                    <p>{{ gtData?.Provision }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>CTS</label>
+                                    <p>{{ gtData?.CTS }}%</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Actual</label>
+                                    <p>{{ gtData?.Actual | number}}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Opening Provision</label>
+                                    <p>{{ gtData?.Closing_Provision | number}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12" *ngIf="status!=='A'">
+                                <div class="form-group">
+                                    <label>Remarks</label>
+                                    <textarea class="form-control" maxlength="500" [formControl]="remarksFormControl" 
+                                    id="sign" rows="4"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="detail-btns" *ngIf="status!=='A'">
+                            <button type="button" class="check-detail-btn" (click)="onApprove()"><img src="./assets/images/check-icon.png" alt=""></button>
+                            <button type="button" class="cross-detail-btn" (click)="onReject()"><img src="./assets/images/cross-icon.png" alt=""></button>
+                        </div>
+                        <div class="detail-btns" *ngIf="status==='A'">
+                            <button type="button" class="btn common-btn" (click)="close.emit()">OK</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

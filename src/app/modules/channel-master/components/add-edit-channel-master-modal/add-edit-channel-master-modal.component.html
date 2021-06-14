@@ -1,0 +1,50 @@
+<div class="common-modal">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title ">{{ title }}</div>
+        <button aria-label="Close " class="close " (click)="onCancel()" type="button ">
+            <span aria-hidden="true ">
+                <i class="las la-times "></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body mb-0 ">
+        <div class="user-form ">
+            <form [formGroup]="channelMasterForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="Channel">Channel</label>
+                        <input type="text" id="Channel" formControlName="Channel" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('Channel','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Expense_Type">Expense Type</label>
+                        <input type="text" id="Expense_Type" formControlName="Expense_Type" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('Expense_Type','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Expense_Description">Expense Desc</label>
+                        <input type="text" id="Expense_Description" formControlName="Expense_Description" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('Expense_Description','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="BisonRowCode">Bison Row Code</label>
+                        <input type="text" id="BisonRowCode" formControlName="BisonRowCode" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('BisonRowCode','required')" class="text-danger">This field is required
+                        </div>
+                        <div *ngIf="shouldShowError('BisonRowCode','pattern')" class="text-danger">Bison Row Code should be numeric and less than 9 characters</div>
+                    </div>
+
+                </div>
+                <div class="form-group mt-4 text-center cap-submit">
+                    <button type="submit" class="common-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

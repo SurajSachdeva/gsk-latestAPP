@@ -1,0 +1,43 @@
+.modal-header {
+    border: none;
+    padding-bottom: 0;
+}
+
+.common-modal .small-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+.common-modal .modal-header .close {
+    color: #000;
+    margin: -2rem -2rem -1rem auto;
+    padding: 0.5rem 0.5rem;
+    opacity: 1;
+    font-size: 24px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px rgb(0 0 0 / 10%);
+}
+
+.common-modal .modal-body {
+    border: 0;
+    padding: 20px 30px;
+}
+
+.common-modal .form-control {
+    background: #FCFCFC;
+    border: 1px solid #e1e1e1;
+}
+
+.modal-header {
+    border: none;
+    padding-bottom: 0;
+}
+
+.close:not(:disabled):not(.disabled):focus,
+.close:not(:disabled):not(.disabled):hover {
+    opacity: 1;
+}

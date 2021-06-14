@@ -1,0 +1,73 @@
+<div class="main-wrapper">
+
+    <div class="breadcrum-btns">
+        <div class="container">
+            <div class="inner-breadcrum-btns">
+
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="las la-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#">Master</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Scheme Master</li>
+                </ol>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="white-bg">
+
+            <div class="dasboard-table">
+
+                <div class="table-responsive">
+
+                    <table class="table table-fixed">
+                        <thead class="gray">
+                            <tr>
+                                <th class="w-1">WON ID</th>
+                                <th class="w-5">Brand</th>
+                                <th class="w-2">Scheme Description</th>
+                                <th class="w-4">Scheme Based On</th>
+                                <th class="w-3">Start Date</th>
+                                <th class="w-1">End Date</th>
+                                <th class="w-7">Budget Value</th>
+                                <th class="w-8">Creation Date</th>
+                                <th class="w-11">Slab Start</th>
+                                <th class="w-12">Slab End</th>
+                                <th class="w-4">Benefit Value</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let item of data">
+                                <td>{{ item.WON_ID }}</td>
+                                <td>{{ item.Brand }}</td>
+                                <td>{{ item.SchemeDescription }}</td>
+                                <td>{{ item.SchemeBasedOn }}</td>
+                                <td>{{ item.StartDate | date: 'dd-MM-yyyy' }}</td>
+                                <td>{{ item.EndDate | date: 'dd-MM-yyyy'}}</td>
+                                <td>{{ item.BudgetValue }}</td>
+                                <td>{{ item.CreationDate | date: 'dd-MM-yyyy' }}</td>
+                                <td>{{ item.SlabStart }}</td>
+                                <td>{{ item.SlabEnd }}</td>
+                                <td>{{ item.BenefitValue }}</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+            <div class="submit-btn">
+                <button type="button" (click)="onDownload()" class="common-btn"><i class="las la-download"></i> Download</button>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,244 @@
+<div class="breadcrum-btns">
+	<div class="container">
+		<div class="inner-breadcrum-btns">
+
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a><i class="las la-home"></i></a></li>
+				<li class="breadcrumb-item"><a>Month End Activities</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Actual Approval Trigger
+				</li>
+			</ol>
+
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="white-bg">
+		<div class="inner-content">
+			<div class="form-progress">
+				<ul>
+					<li [ngClass]="{'active':shouldShowActualTab('WCU')}"><span>1</span></li>
+					<li class="active" [ngClass]="{'active':shouldShowActualTab('MET')}"><span>2</span></li>
+					<li [ngClass]="{'active':shouldShowActualTab('PC')}"><span>3</span></li>
+					<li [ngClass]="{'active':shouldShowActualTab('Confirm')}"><span>4</span></li>
+				</ul>
+			</div>
+
+			<div class="user-form" *ngIf="shouldShowActualTab('WCU')" [ngClass]="{'active':shouldShowActualTab('WCU')}">
+				<form>
+					<div class="form-row">
+						<div class="col-md-12 form-group">
+							<h3 class="title_step">Won Creation Sheet Upload</h3>
+						</div>
+						<div class="col-md-4 form-group">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="customFile" #fileInput>
+								<label class="custom-file-label" for="customFile">Choose file</label>
+							</div>
+						</div>
+						<div class="col-md-2 form-group">
+							<button type="submit" class="common-btn sm" (click)="uploadFile();">Submit</button>
+						</div>
+					</div>
+					<div class="form-row mt-4">
+						<div class="col-md-12 form-group">
+							<h3 class="title_step">Set Tolerance Limit (%)</h3>
+						</div>
+						<div class="col-md-4 form-group">
+							<input type="text" class="form-control" formControlName='tolerance'>
+						</div>
+
+					</div>
+
+					<div class="form-row">
+						<div class="col-md-12">
+							<div class="submit-btn">
+								<button type="submit" (click)="openActualTab('MET')"
+									[ngClass]="{'active':shouldShowActualTab('MET')}" class="common-btn next">Next <i
+										class="las la-angle-right pl-3"></i></button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+
+			<div class="user-form" *ngIf="shouldShowActualTab('MET')" [ngClass]="{'active':shouldShowActualTab('MET')}">
+				<form>
+					<div class="form-group">
+						<h3 class="title_step">Month End Trigger</h3>
+						<h6 class="step_stle">Manual Provision Upload</h6>
+					</div>
+					<div class="form-row form-group">
+						<label class="col-md-2 stp_lable">General Trade</label>
+						<div class="col-md-4">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="customFile" #fileInputGT>
+								<label class="custom-file-label" for="customFile">Choose file</label>
+							</div>
+							<!-- <div class="sm_close">gt-channel.exl <i class="las la-times"></i></div> -->
+						</div>
+						<div class="col-md-2">
+							<button type="upload" class="common-btn sm" (click)="uploadFileGT();">Upload</button>
+						</div>
+					</div>
+
+					<div class="form-row form-group">
+						<label class="col-md-2 stp_lable">MT TOT & Ecom TOT</label>
+						<div class="col-md-4">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="customFile" >
+								<label class="custom-file-label" for="customFile">Choose file</label>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<button type="upload" class="common-btn sm">Upload</button>
+						</div>
+					</div>
+
+					<div class="form-row form-group">
+						<label class="col-md-2 stp_lable">Canvas</label>
+						<div class="col-md-4">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="customFile" >
+								<label class="custom-file-label" for="customFile">Choose file</label>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<button type="upload" class="common-btn sm">Upload</button>
+						</div>
+					</div>
+
+					<div class="form-row form-group">
+						<label class="col-md-2 stp_lable">SDR</label>
+						<div class="col-md-4">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="customFile" >
+								<label class="custom-file-label" for="customFile">Choose file</label>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<button type="upload" class="common-btn sm">Upload</button>
+						</div>
+					</div>
+
+					<div class="form-row form-group">
+						<label class="col-md-2 stp_lable">CDT</label>
+						<div class="col-md-4">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="customFile" >
+								<label class="custom-file-label" for="customFile">Choose file</label>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<button type="upload" class="common-btn sm">Upload</button>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<h5 class="step_stle">Manual Actualization Upload </h5>
+					</div>
+
+					<div class="form-row form-group">
+						<div class="col-md-4">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="customFile" >
+								<label class="custom-file-label" for="customFile">Choose file</label>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<button type="upload" class="common-btn sm">Upload</button>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="col-md-12">
+							<div class="submit-btn">
+								<button type="submit" class="common-btn prev" (click)="openActualTab('WCU')"
+								[ngClass]="{'active':shouldShowActualTab('WCU')}">
+								<i class="las la-angle-left pr-3"></i>
+									Prev</button>
+								<button type="submit" class="common-btn next" (click)="openActualTab('PC')"
+									[ngClass]="{'active':shouldShowActualTab('PC')}">Next <i
+										class="las la-angle-right pl-3"></i></button>
+							</div>
+						</div>
+
+					</div>
+
+
+				</form>
+
+			</div>
+
+			<div class="container" *ngIf="shouldShowActualTab('PC')" [ngClass]="{'active':shouldShowActualTab('PC')}">
+				<div class="white-bg">
+					<div class="inner-content">
+
+						<div class="user-form text-center">
+							<form>
+								<div class="row form-group">
+									<div class="col-md-12">
+										<h3 class="title_step mb-4">Provision Calculation</h3>
+										<button type="submit" class="common-btn btn_calculate mt-2 mb-3">Calculate
+											Provision</button>
+										<h5 class="step_stle mb-4">Provision is calculated and is ready to download,
+											click on the button below to download as excel:</h5>
+										<button type="submit" class="common-btn text-capitalize">Download Provision as
+											Excel</button>
+									</div>
+								</div>
+
+
+								<div class="form-row">
+									<div class="col-md-12">
+										<div class="submit-btn">
+											<button type="submit" class="common-btn prev"
+											(click)="openActualTab('MET')"><i
+											[ngClass]="{'active':shouldShowActualTab('MET')}"	class="las la-angle-left pr-3"></i> Prev</button>
+											<button type="submit" class="common-btn next"
+												(click)="openActualTab('Confirm')"
+												[ngClass]="{'active':shouldShowActualTab('Confirm')}">Next <i
+													class="las la-angle-right pl-3"></i></button>
+										</div>
+									</div>
+
+								</div>
+
+
+
+							</form>
+
+						</div>
+
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="user-form text-center"
+			*ngIf="shouldShowActualTab('Confirm')" [ngClass]="{'active':shouldShowActualTab('Confirm')}">
+				<form>
+					<div class="row form-group mb-5">
+						<div class="col-md-12">
+							<h3 class="title_step mt-5 mb-4">You are about to freeze input files to process month end
+							</h3>
+							<a type="submit" data-target="#Confirmation" data-toggle="modal"
+								class="common-btn text-capitalize">Confirm</a>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="col-md-12">
+							<div class="submit-btn">
+								<button type="submit" class="common-btn prev" (click)="openActualTab('PC')"
+								[ngClass]="{'active':shouldShowActualTab('PC')}"><i class="las la-angle-left pr-3"></i>
+									Prev</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

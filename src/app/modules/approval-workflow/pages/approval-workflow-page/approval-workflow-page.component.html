@@ -1,0 +1,592 @@
+<div class="main-wrapper">
+
+    <div class="outer-static-page">
+
+        <div class="container">
+            <div class="white-bg">
+
+                <div class="approval-tabs-page">
+
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <div class="approval-tabs">
+                                <div class="approval-tabs-title">Provision</div>
+
+                                <div class="approval-tabs-head">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item">
+                                            <button class="nav-link" (click)="openProvisionTab('GT')" [ngClass]="{'active':shouldShowProvisionTab('GT')}">General
+                                                Trade</button>
+                                        </li>
+                                        <li class="nav-item">
+                                            <button class="nav-link" (click)="openProvisionTab('MTTOT')" [ngClass]="{'active':shouldShowProvisionTab('MTTOT')}">MT TOT & Ecom
+                                                TOT</button>
+                                        </li>
+                                        <li class="nav-item">
+                                            <button class="nav-link" (click)="openProvisionTab('Canvas')" [ngClass]="{'active':shouldShowProvisionTab('Canvas')}">Canvas</button>
+                                        </li>
+                                        <li class="nav-item">
+                                            <button class="nav-link" (click)="openProvisionTab('CDT')" [ngClass]="{'active':shouldShowProvisionTab('CDT')}">CDT</button>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div *ngIf="shouldShowProvisionTab('GT')" class="tab-pane" [ngClass]="{'active':shouldShowProvisionTab('GT')}">
+
+                                        <div class="dashbidcol">
+                                            <a [routerLink]="['/Provision','GT','Approved']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Approved</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionGTLandingPageDetail.approvalCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-check-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol2">
+                                            <a [routerLink]="['/Provision','GT','Pending']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Pending</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionGTLandingPageDetail.pendingCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-hourglass-end"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol3">
+                                            <a [routerLink]="['/Provision','GT','Rejected']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Rejected</h3>
+                                                        <p>For Last 3 Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionGTLandingPageDetail.rejectionCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-times-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                    <div *ngIf="shouldShowProvisionTab('MTTOT')" class="tab-pane" [ngClass]="{'active':shouldShowProvisionTab('MTTOT')}">
+                                        <div class="dashbidcol">
+                                            <a [routerLink]="['/Provision','MTTOT','Approved']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Approved</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionMTTOTLandingPageDetail.approvalCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-check-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol2">
+                                            <a [routerLink]="['/Provision','MTTOT','Pending']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Pending</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionMTTOTLandingPageDetail.pendingCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-hourglass-end"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol3">
+                                            <a [routerLink]="['/Provision','MTTOT','Rejected']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Rejected</h3>
+                                                        <p>For Last 3 Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionMTTOTLandingPageDetail.rejectionCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-times-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="shouldShowProvisionTab('Canvas')" class="tab-pane" [ngClass]="{'active':shouldShowProvisionTab('Canvas')}">
+                                        <div class="dashbidcol">
+                                            <a [routerLink]="['/Provision','Canvas','Approved']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Approved</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionCanvasLandingPageDetail.approvalCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-check-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol2">
+                                            <a [routerLink]="['/Provision','Canvas','Pending']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Pending</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionCanvasLandingPageDetail.pendingCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-hourglass-end"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol3">
+                                            <a [routerLink]="['/Provision','Canvas','Rejected']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Rejected</h3>
+                                                        <p>For Last 3 Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionCanvasLandingPageDetail.rejectionCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-times-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="shouldShowProvisionTab('CDT')" class="tab-pane" [ngClass]="{'active':shouldShowProvisionTab('CDT')}">
+                                        <div class="dashbidcol">
+                                            <a [routerLink]="['/Provision','CDT','Approved']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Approved</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionCDTLandingPageDetail.approvalCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-check-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol2">
+                                            <a [routerLink]="['/Provision','CDT','Pending']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Pending</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionCDTLandingPageDetail.pendingCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-hourglass-end"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol3">
+                                            <a [routerLink]="['/Provision','CDT','Rejected']">
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Rejected</h3>
+                                                        <p>For Last 3 Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ provisionCDTLandingPageDetail.rejectionCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-times-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <div class="approval-tabs">
+                                <div class="approval-tabs-title">Actual</div>
+
+                                <div class="approval-tabs-head">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <button class="nav-link" (click)="openActualTab('GT')" [ngClass]="{'active':shouldShowActualTab('GT')}">General Trade</button>
+                                        </li>
+                                        <li class="nav-item">
+                                            <button class="nav-link" (click)="openActualTab('MTTOT')" [ngClass]="{'active':shouldShowActualTab('MTTOT')}">MT TOT & Ecom
+                                                TOT</button>
+                                        </li>
+                                        <li class="nav-item">
+                                            <button class="nav-link" (click)="openActualTab('Canvas')" [ngClass]="{'active':shouldShowActualTab('Canvas')}">Canvas</button>
+                                        </li>
+                                        <li class="nav-item">
+                                            <button class="nav-link" (click)="openActualTab('SDR')" [ngClass]="{'active':shouldShowActualTab('SDR')}">SDR</button>
+                                        </li>
+                                        <li class="nav-item">
+                                            <button class="nav-link" (click)="openActualTab('CDT')" [ngClass]="{'active':shouldShowActualTab('CDT')}">CDT</button>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div *ngIf="shouldShowActualTab('GT')" class="tab-pane" [ngClass]="{'active':shouldShowActualTab('GT')}">
+
+                                        <div class="dashbidcol">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Approved</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualGTLandingPageDetail.approvalCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-check-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol2">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Pending</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualGTLandingPageDetail.pendingCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-hourglass-end"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol3">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Rejected</h3>
+                                                        <p>For Last 3 Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualGTLandingPageDetail.rejectionCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-times-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                    <div *ngIf="shouldShowActualTab('MTTOT')" class="tab-pane" [ngClass]="{'active':shouldShowActualTab('MTTOT')}">
+                                        <div class="dashbidcol">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Approved</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualMTTOTLandingPageDetail.approvalCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-check-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol2">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Pending</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualMTTOTLandingPageDetail.pendingCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-hourglass-end"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol3">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Rejected</h3>
+                                                        <p>For Last 3 Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualMTTOTLandingPageDetail.rejectionCount }}</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-times-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="shouldShowActualTab('Canvas')" class="tab-pane" [ngClass]="{'active':shouldShowActualTab('Canvas')}">
+                                        <div class="dashbidcol">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Approved</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualCanvasLandingPageDetail.approvalCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-check-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol2">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Pending</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualCanvasLandingPageDetail.pendingCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-hourglass-end"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol3">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Rejected</h3>
+                                                        <p>For Last 3 Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualCanvasLandingPageDetail.rejectionCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-times-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="shouldShowActualTab('SDR')" class="tab-pane" [ngClass]="{'active':shouldShowActualTab('SDR')}">
+                                        <div class="dashbidcol">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Approved</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualSDRLandingPageDetail.approvalCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-check-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol2">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Pending</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualSDRLandingPageDetail.pendingCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-hourglass-end"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol3">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Rejected</h3>
+                                                        <p>For Last 3 Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualSDRLandingPageDetail.rejectionCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-times-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="shouldShowActualTab('CDT')" class="tab-pane" [ngClass]="{'active':shouldShowActualTab('CDT')}">
+                                        <div class="dashbidcol">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Approved</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualCDTLandingPageDetail.approvalCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-check-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol2">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Pending</h3>
+                                                        <p>For Last Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualCDTLandingPageDetail.pendingCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-hourglass-end"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="dashbidcol dashbidcol3">
+                                            <a>
+                                                <div class="row align-items-center">
+                                                    <div class="col-5">
+                                                        <h3>Rejected</h3>
+                                                        <p>For Last 3 Month</p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="das-no">{{ actualCDTLandingPageDetail.rejectionCount }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="das-ico"><i class="las la-times-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

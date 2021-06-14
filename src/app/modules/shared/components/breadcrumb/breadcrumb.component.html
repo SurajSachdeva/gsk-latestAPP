@@ -1,0 +1,19 @@
+<div class="breadcrum-btns">
+    <div class="container">
+        <div class="inner-breadcrum-btns">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/Landing"><i class="las la-home"></i></a></li>
+                <li class="breadcrumb-item" *ngFor="let item of data"><a [routerLink]="item.linkUrl">{{item.name}}</a>
+                </li>
+            </ol>
+            <div class="down-up-btn" *ngIf="showButtons">
+                <button (click)="downloadExcel.emit()"><img src="../assets/images/download-excel.svg" alt=""> Download
+                    as Excel</button>
+                <button *ngIf="showUploadButton" (click)="file.click()"><img src="../assets/images/upload-excel.svg"
+                        alt="">
+                    <input type="file" (change)="onFileChange($event)" #file style="display: none;" />Upload as
+                    Excel</button>
+            </div>
+        </div>
+    </div>
+</div>

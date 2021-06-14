@@ -1,0 +1,58 @@
+<div class="common-modal">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title">{{ title }}</div>
+        <button aria-label="Close" class="close" (click)="onCancel()" type="button">
+            <span aria-hidden="true">
+                <i class="las la-times"></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body mb-0">
+        <div class="user-form">
+            <form [formGroup]="canvasMasterForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="New_Customer_Code">Distributor Code</label>
+                        <input type="text" id="New_Customer_Code" formControlName="New_Customer_Code" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('New_Customer_Code','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="Customer_Name">Distributor Name</label>
+                        <input type="text" id="Customer_Name" formControlName="Customer_Name" readonly="true" class="form-control" placeholder="">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="SubD_Margin">SD Margin</label>
+                        <input type="text" id="SubD_Margin" formControlName="SubD_Margin" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('SubD_Margin','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="SubD_Freight">SD Freight</label>
+                        <input type="text" id="SubD_Freight" formControlName="SubD_Freight" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('SubD_Freight','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="RSD_Margin">RSD Margin</label>
+                        <input type="text" id="RSD_Margin" formControlName="RSD_Margin" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('RSD_Margin','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="RSD_Freight">RSD Freight</label>
+                        <input type="text" id="RSD_Freight" formControlName="RSD_Freight" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('RSD_Freight','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-4 text-center cap-submit">
+                    <button type="submit" class="common-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

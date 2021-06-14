@@ -1,0 +1,132 @@
+<div class="main-wrapper">
+
+    <app-breadcrumb [data]="breadCrumbData" [showButtons]="false"></app-breadcrumb>
+
+    <div class="container">
+        <div class="white-bg">
+            <div class="inner-content">
+                <form class="common-form" id="" method="get" action="#">
+                    <fieldset>
+                        <div class="row">
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>WON ID</label>
+                                    <p>{{ gtData?.WON_ID }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-9">
+                                <div class="form-group">
+                                    <label>Scheme Details</label>
+                                    <p>{{ gtData?.Scheme_Details }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Region</label>
+                                    <p>{{ gtData?.Region }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Brand</label>
+                                    <p>{{ gtData?.Brand }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="customers-type">Sub Channel</label>
+                                    <p>{{ gtData?.Sub_Channel }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>HUL SI-9 Budget</label>
+                                    <p>{{ gtData?.HUL_SI9_Budget }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>User Provision</label>
+                                    <p>{{ gtData?.User_Provision | number}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Actuals</label>
+                                    <p>{{ gtData?.Actuals | number}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Difference</label>
+                                    <p>{{ gtData?.Difference | number}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Scheme Start Date</label>
+                                    <p>{{ gtData?.Scheme_StartDate | date :"dd/MM/yy" }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Scheme End Date</label>
+                                    <p>{{ gtData?.Scheme_EndDate | date :"dd/MM/yy" }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Sales</label>
+                                    <p>{{ gtData?.Sales | number}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Prov/Sales</label>
+                                    <p>{{ gtData?.CTS || 0 }}%</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Investment Type</label>
+                                    <p>{{ gtData?.Investment_Type || 0 }} % Base</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12" *ngIf="status!=='A'">
+                                <div class="form-group">
+                                    <label>Remarks</label>
+                                    <textarea class="form-control" maxlength="500" [formControl]="remarksFormControl" 
+                                    id="sign" rows="4"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="detail-btns" *ngIf="status!=='A'">
+                            <button type="button" class="check-detail-btn" (click)="onApprove()"><img src="./assets/images/check-icon.png" alt=""></button>
+                            <button type="button" class="cross-detail-btn" (click)="onReject()"><img src="./assets/images/cross-icon.png" alt=""></button>
+                        </div>
+                        <div class="detail-btns" *ngIf="status==='A'">
+                            <button type="button" class="btn common-btn" (click)="close.emit()">OK</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

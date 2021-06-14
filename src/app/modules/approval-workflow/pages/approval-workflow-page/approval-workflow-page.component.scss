@@ -1,0 +1,16 @@
+.nav-link {
+    width: 100%;
+    border: 1px solid #E4E4E4;
+    color: #878787;
+    border-radius: 0;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer!important;
+    &.active {
+        background: #F36633;
+        border-radius: 0;
+        border-color: #F36633;
+        color: #fff;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,44 @@
+<div class="common-modal">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title">Edit CDT City Master</div>
+        <button aria-label="Close" class="close" (click)="onCancel()" type="button">
+            <span aria-hidden="true">
+                <i class="las la-times"></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body mb-0">
+        <div class="user-form">
+            <form [formGroup]="cdtCityMasterForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="CityX">CityX</label>
+                        <input type="text" id="CityX" formControlName="CityX" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('CityX','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="City_Name">City Name</label>
+                        <input type="text" id="City_Name" formControlName="City_Name" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('City_Name','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="Category">Category</label>
+                        <select class="custom-select" id="Category" formControlName="Category">
+                            <option value="">Select</option>
+                            <option value="Big">Big</option>
+                            <option value="Small">Small</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Category','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group mt-4 text-center cap-submit">
+                    <button type="submit" class="common-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

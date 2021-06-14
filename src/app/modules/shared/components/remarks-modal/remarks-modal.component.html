@@ -1,0 +1,18 @@
+<div class="common-modal ">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title">{{ heading }}</div>
+        <button aria-label="Close" class="close" (click)="onCancel()" type="button">
+            <span aria-hidden="true">
+                <i class="las la-times"></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body common-modal">
+        <form [formGroup]="formGroup">
+            <textarea rows="5" placeholder="Remarks" formControlName="remarks" style="display: block; width: 100%;"></textarea>
+        </form>
+        <div class="form-group mt-4 text-center cap-submit">
+            <button type="button" (click)="onSubmit()" class="common-btn">Submit</button>
+        </div>
+    </div>
+</div>

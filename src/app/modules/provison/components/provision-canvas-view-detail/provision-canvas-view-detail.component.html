@@ -1,0 +1,92 @@
+<div class="main-wrapper">
+
+    <app-breadcrumb [data]="breadCrumbData" [showButtons]="false"></app-breadcrumb>
+
+    <div class="container">
+        <div class="white-bg">
+            <div class="inner-content">
+                <form class="common-form" id="" method="get" action="#">
+                    <fieldset>
+                        <div class="row">
+
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Month</label>
+                                    <p>{{ data?.Month_Name }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    <p>{{ data?.Comapany_Name }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="customers-type">Sub-D/RSD</label>
+                                    <p>{{ data?.Distributor_Type }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>FRT/MGN</label>
+                                    <p>{{ data?.Discount_Type }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Sales</label>
+                                    <p>{{ data?.Sales }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Provision</label>
+                                    <p>{{ data?.Provision }}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>CTC</label>
+                                    <p>{{ data?.CTS || 0 }} %</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label>Opening Provision</label>
+                                    <p>{{ data?.Opening_Prov }}</p>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-12" *ngIf="status!=='A'">
+                                <div class="form-group">
+                                    <label>Remarks</label>
+                                    <textarea maxlength="500" class="form-control" [formControl]="remarksFormControl" id="sign" rows="4"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="detail-btns" *ngIf="status!=='A'">
+                            <button type="button" class="check-detail-btn" (click)="onApprove()"><img src="./assets/images/check-icon.png" alt=""></button>
+                            <button type="button" class="cross-detail-btn" (click)="onReject()"><img src="./assets/images/cross-icon.png" alt=""></button>
+                        </div>
+                        <div class="detail-btns" *ngIf="status==='A'">
+                            <button type="button" class="btn common-btn" (click)="close.emit()">OK</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

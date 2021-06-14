@@ -1,0 +1,39 @@
+<div class="common-modal">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title ">{{ title }}</div>
+        <button aria-label="Close " class="close " (click)="onCancel()" type="button ">
+            <span aria-hidden="true ">
+                <i class="las la-times "></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body mb-0 ">
+        <div class="user-form ">
+            <form [formGroup]="glCodeMasterForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+
+                    <div class="col-md-6 form-group">
+                        <label for="GL_Account_Code">GL Account Code</label>
+                        <input type="text" id="GL_Account_Code" formControlName="GL_Account_Code" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('GL_Account_Code','required')" class="text-danger">This field is required
+                        </div>
+                        <div *ngIf="shouldShowError('GL_Account_Code','pattern')" class="text-danger">
+                            This field should contain only numeric characters.
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label for="GL_Account_Desc">GL Acc Desc</label>
+                        <input type="text" id="GL_Account_Desc" formControlName="GL_Account_Desc" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('GL_Account_Desc','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group mt-4 text-center cap-submit">
+                    <button type="submit" class="common-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

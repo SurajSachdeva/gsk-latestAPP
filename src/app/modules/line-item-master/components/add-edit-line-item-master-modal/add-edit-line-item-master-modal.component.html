@@ -1,0 +1,60 @@
+<div class="common-modal">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title">{{ title }}</div>
+        <button aria-label="Close" class="close" (click)="onCancel()" type="button">
+            <span aria-hidden="true">
+                <i class="las la-times"></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body mb-0">
+        <div class="user-form">
+            <form [formGroup]="formGroup" autocomplete="off" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+
+                    <div class="col-md-4 form-group">
+                        <label for="Claim_Type">Claim Type</label>
+                        <select class="custom-select" id="Claim_Type" formControlName="Claim_Type">
+                            <option value="">Select</option>
+                            <option *ngFor="let item of claimTypeDropdown" [value]="item.Expense_Type">{{ item.Expense_Type }}</option>
+                         
+                        </select>
+                        <div *ngIf="shouldShowError('Claim_Type','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Event_Type">Event Type</label>
+                        <select class="custom-select" id="Event_Type" formControlName="Event_Type">
+                            <option value="">Select</option>
+                            <option value="Provision">Provision</option>
+                            <option value="Actualization">Actualization</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Event_Type','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="SAP_Reports">SAP Reports</label>
+                        <input type="text" id="SAP_Reports" class="form-control" formControlName="SAP_Reports" placeholder="">
+                        <div *ngIf="shouldShowError('SAP_Reports','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Line_Item_Text_Format">Line Item Text Format</label>
+                        <input type="text" id="Line_Item_Text_Format" formControlName="Line_Item_Text_Format" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('Line_Item_Text_Format','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group mt-4 text-center cap-submit">
+                    <button type="submit" class="common-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

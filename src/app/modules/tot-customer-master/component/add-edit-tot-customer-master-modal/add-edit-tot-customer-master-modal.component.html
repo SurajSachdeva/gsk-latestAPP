@@ -1,0 +1,57 @@
+<div class="common-modal">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title">{{title}}</div>
+        <button aria-label="Close" class="close" (click)="onCancel()" type="button">
+            <span aria-hidden="true">
+                <i class="las la-times"></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body mb-0">
+        <div class="user-form">
+            <form [formGroup]="formGroup" autocomplete="off" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="Category">Category</label>
+                        <select class="custom-select" id="Category" formControlName="Category">
+                            <option value="">Select</option>
+                            <option value="MT">MT</option>
+                            <option value="ECOM">ECOM</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Category','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Channel">Channel</label>
+                        <select class="custom-select" id="Channel" formControlName="Channel">
+                            <option value="">Select</option>
+                            <option value="Both">Both</option>
+                            <option value="Secondary">Secondary</option>
+                            <option value="Primary">Primary</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Channel','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Filter">Filter</label>
+                        <input type="text" class="form-control" id="Filter" formControlName="Filter">
+                        <div *ngIf="shouldShowError('Filter','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="Account">Account</label>
+                        <input type="text" class="form-control" id="Account" formControlName="Account">
+                        <div *ngIf="shouldShowError('Account','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-4 text-center cap-submit">
+                    <button type="submit" class="common-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

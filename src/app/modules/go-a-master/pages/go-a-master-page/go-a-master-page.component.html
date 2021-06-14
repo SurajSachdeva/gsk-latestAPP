@@ -1,0 +1,73 @@
+<div class="main-wrapper">
+    <div class="breadcrum-btns">
+        <div class="container">
+            <div class="inner-breadcrum-btns">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="las la-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#">Master</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">GoA Master</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="white-bg">
+
+            <div class="dasboard-table">
+
+                <div class="table-responsive">
+
+                    <table class="table table-fixed">
+                        <thead class="gray">
+                            <tr>
+                                <th class="w-1">MudId</th>
+                                <th class="w-5">User Name</th>
+                                <th class="w-4">Role (Approver/Viewer)</th>
+                                <th class="w-2">EmailId</th>
+                                <th class="w-3">Level</th>
+                                <th class="w-1">Department</th>
+                                <th class="w-7">Slab Start</th>
+                                <th class="w-8">Slab End</th>
+                                <th class="w-11">User Group</th>
+                                <th class="w-3">Is Active</th>
+                                <th class="w-1">Edit</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let item of data">
+                                <td>{{ item.MudID }}</td>
+                                <td>{{ item.UserName }}</td>
+                                <td>{{ item.Role }}</td>
+                                <td>{{ item.EmailId }}</td>
+                                <td>{{ item.Level }}</td>
+                                <td>{{ item.Department }}</td>
+                                <td>{{ item.SlabStart }}</td>
+                                <td>{{ item.SlabEnd }}</td>
+                                <td></td>
+                                <td>{{ item.Is_Active ? 'Y':'N' }}</td>
+                                <td>
+                                    <img (click)="onEdit(item)" src="./assets/images/edit.png" alt="">
+                                    <img (click)="onDelete(item)" class="ml-2" src="./assets/images/delete.png" alt="">
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+            <div class="submit-btn">
+                <button type="button" (click)="onAdd()" class="common-btn gray"><i class="las la-plus"></i>Add
+                    User</button>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

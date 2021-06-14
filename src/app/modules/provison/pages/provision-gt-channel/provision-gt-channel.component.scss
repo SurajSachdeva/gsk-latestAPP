@@ -1,0 +1,31 @@
+.label-check {
+    &.checked::after {
+        background-image: url(../../../../../assets/images/check-icon.png) !important;
+        background-color: #E0FFD5;
+        border: 1px solid #9FEB74;
+    }
+}
+
+.label-cross {
+    &.checked::after {
+        background-image: url(../../../../../assets/images/cross-icon.png) !important;
+        background-color: #FFD5D5;
+        border: 1px solid #FE9696;
+    }
+}
+
+.label-check-all {
+    &.checked::after {
+        background-image: url(../../../../../assets/images/check-icon.png) !important;
+        background-color: #E0FFD5;
+        border: 1px solid #9FEB74;
+    }
+}
+
+select {
+    background-color: transparent;
+    border: none;
+    width: 80px;
+    font-weight: 600;
+    font-size: 12px;
+}

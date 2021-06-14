@@ -1,0 +1,114 @@
+<div class="main-wrapper" *ngIf="!showViewDetail">
+    <app-breadcrumb [data]="breadCrumbData" [showButtons]="true" [showUploadButton]="isPending || isRejected" (downloadExcel)="onExportToExcel()" (uploadExcel)="onUploadToExcel($event)"></app-breadcrumb>
+    <div class="container">
+        <div class="white-bg">
+            <app-landing-page-detail [pendingCount]="landingPageDetail.pendingCount" [pendingPath]="'/Provision/CDT/Pending'" [approvedCount]="landingPageDetail.approvalCount" [approvedPath]="'/Provision/CDT/Approved'" [activeCard]="status" [rejectedPath]="'/Provision/CDT/Rejected'"
+                [rejectedCount]="landingPageDetail.rejectionCount">
+            </app-landing-page-detail>
+            <div class="dasboard-table">
+                <form [formGroup]="formGroup">
+                    <div class="table-responsive">
+                        <table class="table table-fixed">
+                            <thead>
+                                <tr class="" [ngClass]="{'approval-bg':isApproved ,'reject-bg':isRejected}">
+                                    <th>
+                                        <select formControlName='month'>
+                                            <option value="">Month</option>
+                                            <option *ngFor="let item of monthDropdown" [value]="item">{{ item }}
+                                            </option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        DB Code
+
+                                    </th>
+                                    <th>
+                                        DB Name
+                                    </th>
+
+                                    <th>
+                                        <select formControlName='city'>
+                                            <option value="">City</option>
+                                            <option *ngFor="let item of cityDropdown" [value]="item">
+                                                {{ item }}
+                                            </option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        Rate
+                                    </th>
+                                    <th>
+                                        <select formControlName='channel'>
+                                            <option value="">Channel</option>
+                                            <option *ngFor="let item of channelDropdown" [value]="item">
+                                                {{ item }}
+                                            </option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        Sale
+                                    </th>
+                                    <th>Provision</th>
+                                    <th style="width: 50px;">CTC</th>
+                                    <th>Opening Provision</th>
+                                    <th style="text-align: center;">
+                                        <div style="display: flex;justify-content: center;">
+                                            Status
+                                            <div class="custom-control custom-checkbox custom-table-checkbox" style="margin-left: 10px;margin-top: -2px;" *ngIf="isPending" (click)="onApproveAll()">
+                                                <label class="custom-control-label label-check-all" [ngClass]="{'checked':isAllSelected()}"></label>
+                                            </div>
+                                        </div>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="font-strong" *ngIf="filteredData && filteredData.length">
+                                    <td colspan="6">Total</td>
+                                    <td>{{ getTotalSale().toFixed(2) | mask: 'separator' : ',' }}</td>
+                                    <td colspan="2">
+                                        {{ getTotalProvision().toFixed(2) | mask: 'separator' : ','}}
+                                    </td>
+
+                                    <td colspan="2">
+                                        {{ getTotalOpeningProvision().toFixed(2)| mask: 'separator' : ','}}
+                                    </td>
+                                </tr>
+                                <tr class="approval-bg" *ngFor="let item of filteredData" [ngClass]="getRowClasses(item)">
+                                    <td>{{ item.Month_Name }}</td>
+                                    <td> {{ item.Distributor_Code }}</td>
+                                    <td>{{ item.Distributor_Name }}</td>
+                                    <td>{{ item.City }}</td>
+                                    <td>{{ item.Rate }}</td>
+                                    <td>
+                                        {{ item.Channel }}
+                                    </td>
+                                    <td>{{ item.Sales | mask: 'separator' : ',' }}</td>
+                                    <td>{{ item.Provision | mask: 'separator' : ',' }}</td>
+                                    <td>{{ item.CTS }}%</td>
+                                    <td>{{ item.Opening_Provision | mask: 'separator' : ',' }}</td>
+                                    <td class="action-btn">
+                                        <div style="display: flex;justify-content: center;">
+                                            <img src="../assets/images/eye-icon.png" alt="" (click)="onViewDetail(item)">
+                                            <div class="custom-control custom-checkbox" (click)="onApprove(item)">
+                                                <label class="custom-control-label label-check" [ngClass]="{ 'checked': item.RemarkType==='Approve'  }"></label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-crossbtn" *ngIf="isPending || isRejected" (click)="onReject(item)">
+                                                <label class="custom-control-label label-cross" [ngClass]="{'checked': item.RemarkType==='Reject'  }"></label>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class=" submit-btn "><button type="submit " class="common-btn " (click)="onSubmit() ">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-provision-cdt-view-detail [breadCrumbData]="breadCrumbData" *ngIf="showViewDetail" [data]="currentViewDetailItem" [status]="status" (close)="closeViewDetail()"></app-provision-cdt-view-detail>

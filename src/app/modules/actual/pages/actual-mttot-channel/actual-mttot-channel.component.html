@@ -1,0 +1,114 @@
+<div class="main-wrapper" *ngIf="!showViewDetail">
+    <app-breadcrumb [data]="breadCrumbData" [showButtons]="true" [showUploadButton]="isPending || isRejected" (downloadExcel)="onExportToExcel()" (uploadExcel)="onUploadToExcel($event)"></app-breadcrumb>
+    <div class="container">
+        <div class="white-bg">
+            <app-landing-page-detail [pendingCount]="landingPageDetail.pendingCount" 
+            [pendingPath]="'/Actual/MTTOT/Pending'" [approvedCount]="landingPageDetail.approvalCount" 
+            [approvedPath]="'/Actual/MTTOT/Approved'" [activeCard]="status" 
+            [rejectedPath]="'/Actual/MTTOT/Rejected'"
+                [rejectedCount]="landingPageDetail.rejectionCount">
+            </app-landing-page-detail>
+            <div class="dasboard-table">
+                <form [formGroup]="formGroup">
+                    <div class="table-responsive">
+                        <table class="table table-fixed">
+                            <thead>
+                                <tr class="" [ngClass]="{'approval-bg':isApproved ,'reject-bg':isRejected}">
+                                    <th class="w-1">
+                                        <select formControlName='category'>
+                                            <option value="">Category</option>
+                                            <option *ngFor="let item of categoryDropdown" [value]="item">{{ item }}
+                                            </option>
+                                        </select>
+                                    </th>
+                                    <th class="w-3">
+                                        <select formControlName='entity'>
+                                            <option value="">Entity</option>
+                                            <option *ngFor="let item of entityDropdown" [value]="item">{{ item }}
+                                            </option>
+                                        </select>
+                                    </th>
+                                    <th class="w-3">
+                                        <select formControlName='customer'>
+                                            <option value="">Customer Name</option>
+                                            <option *ngFor="let item of customerDropdown" [value]="item">{{ item }}
+                                            </option>
+                                        </select>
+                                    </th>
+
+                                    <th class="w-4">
+                                        <select formControlName='brand'>
+                                            <option value="">Brand</option>
+                                            <option *ngFor="let item of brandDropdown" [value]="item">
+                                                {{ item }}
+                                            </option>
+                                        </select>
+                                      
+                                    </th>
+                                    <th class="w-5">
+                                        <select formControlName='month'>
+                                            <option value="">Month</option>
+                                            <option *ngFor="let item of monthDropdown" [value]="item">
+                                                {{ item }}
+                                            </option>
+                                        </select>
+                                    </th>
+                                    <th class="w-6">Rates-(%)</th>
+                                    <th class="w-7">Sales</th>
+                                    <th class="w-8">Provision</th>
+                                    <th class="w-9">Prov/Sales</th>
+                                    <th class="w-10">Actuals</th>
+                                    <th class="w-11">Opening Prov</th>
+                                    <th class="action-row">Action
+                                        <div class="custom-control custom-checkbox custom-table-checkbox" *ngIf="isPending" (click)="onApproveAll()">
+                                            <label class="custom-control-label label-check-all" [ngClass]="{'checked':isAllSelected()}"></label>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="font-strong" *ngIf="filteredData && filteredData.length">
+                                    <td colspan="6">Total</td>
+                                    <td>{{ getTotalSale() | number}}</td>
+                                    <td colspan="2">{{ getTotalProvision()  | number : '1.0-2'}}</td>
+                                    <td>{{ getTotalActual()  | number : '1.0-2'}}</td>
+                                    <td >{{ getTotalClosingProv() | number}}</td>
+                                </tr>
+                                <tr class="approval-bg" *ngFor="let item of filteredData" [ngClass]="getRowClasses(item)">
+                                    <td>{{ item.Category }}</td>
+                                    <td> {{ item.Entity }}</td>
+                                    <td>{{ item.Customer_Name }}</td>
+                                    <td>{{ item.Brand }}</td>
+                                    <td>{{ item.Month_Name }}</td>
+                                    <td>{{ item.Rate }}%</td>
+                                    <td>{{ item.Sales | number}}</td>
+                                    <td>{{ item.Provision | number}}</td>
+                                    <td>{{ item.CTS }}%</td>
+                                    <td>{{ item.Actual | number}}</td>
+                                    <td>{{ item.Closing_Prov | number}}</td>
+                                    <td class="action-btn">
+                                        <div style="display: flex;justify-content: center;">
+                                            <img src="../assets/images/eye-icon.png" alt="" (click)="onViewDetail(item)">
+                                            <div class="custom-control custom-checkbox" (click)="onApprove(item)">
+                                                <label class="custom-control-label label-check" [ngClass]="{ 'checked': item.RemarkType==='Approve' }"></label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-crossbtn" *ngIf="isPending || isRejected" (click)="onReject(item)">
+                                                <label class="custom-control-label label-cross" [ngClass]="{'checked': item.RemarkType==='Reject' }"></label>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class=" submit-btn "><button type="submit " class="common-btn " *ngIf="isPending || isRejected" (click)="onSubmit() ">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-actual-mttot-view-detail *ngIf="showViewDetail" [status]='status' (close)="closeViewDetail()"
+[breadCrumbData]="breadCrumbData" [data]="currentViewDetailItem"></app-actual-mttot-view-detail>

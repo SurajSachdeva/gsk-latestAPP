@@ -1,0 +1,101 @@
+<div class="common-modal">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title">{{ title }}</div>
+        <button aria-label="Close" class="close" (click)="onCancel()" type="button">
+            <span aria-hidden="true">
+                <i class="las la-times"></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body mb-0">
+        <div class="user-form">
+            <form [formGroup]="goAMasterForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="MudID">MudId</label>
+                        <input type="text" class="form-control" id="MudID" formControlName="MudID">
+                        <div *ngIf="shouldShowError('MudID','required')" class="text-danger">
+                            This field is required
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="UserName">User Name</label>
+                        <input type="text" class="form-control" id="UserName" formControlName="UserName">
+                        <div *ngIf="shouldShowError('UserName','required')" class="text-danger">
+                            This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Role">Role</label>
+                        <select class="custom-select" id="Role" formControlName="Role">
+                            <option selected>Approver</option>
+                            <option>Viewer</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Role','required')" class="text-danger">
+                            This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="EmailId">EmailId</label>
+                        <input type="text" class="form-control" id="EmailId" formControlName="EmailId">
+                        <div *ngIf="shouldShowError('EmailId','required')" class="text-danger">
+                            This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Level">Level</label>
+                        <select class="custom-select" id="Level" formControlName="Level">
+                            <option selected>Level 1</option>
+                            <option>Level 2</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Level','required')" class="text-danger">
+                            This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Department">Department</label>
+                        <select class="custom-select" id="Department" formControlName="Department">
+                            <option selected>Finance</option>
+                            <option>CMT</option>
+                            <option>Other</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Department','required')" class="text-danger">
+                            This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="SlabStart">Slab Start</label>
+                        <input type="number" class="form-control" id="SlabStart" formControlName="SlabStart">
+                        <div *ngIf="shouldShowError('SlabStart','required')" class="text-danger">
+                            This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="SlabEnd">Slab End</label>
+                        <input type="number" class="form-control" id="SlabEnd" formControlName="SlabEnd">
+                        <div *ngIf="shouldShowError('SlabEnd','required')" class="text-danger">
+                            This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="inputname">User Group</label>
+                        <select class="custom-select">
+                            <option selected>Approver</option>
+                            <option>Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group mt-4 text-center cap-submit">
+                    <button type="submit" class="common-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

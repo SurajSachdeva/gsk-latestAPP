@@ -1,0 +1,60 @@
+<div class="dash-colorcol">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="dashbidcol" [ngClass]="{'dashbidcol-active':activeCard==='A'}">
+                <a [routerLink]="approvedPath">
+                    <div class="row align-items-center">
+                        <div class="col-5">
+                            <h3>Approved</h3>
+                            <p>For Last Month</p>
+                        </div>
+                        <div class="col-4">
+                            <div class="das-no">{{ approvedCount }}</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="das-ico"><i class="las la-check-circle"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="dashbidcol dashbidcol2 " [ngClass]="{'dashbidcol2-active':activeCard==='P'}">
+                <a [routerLink]="pendingPath">
+                    <div class="row align-items-center">
+                        <div class="col-5">
+                            <h3>Pending</h3>
+                            <p>For Last Month</p>
+                        </div>
+                        <div class="col-4">
+                            <div class="das-no">{{ pendingCount }}</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="das-ico"><i class="las la-hourglass-end"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="dashbidcol dashbidcol3" [ngClass]="{'dashbidcol3-active':activeCard==='R'}">
+                <a [routerLink]="rejectedPath">
+                    <div class="row align-items-center">
+                        <div class="col-5">
+                            <h3>Rejected</h3>
+                            <p>For Last 3 Month</p>
+                        </div>
+                        <div class="col-4">
+                            <div class="das-no">{{ rejectedCount }}</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="das-ico"><i class="las la-times-circle"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<div id="side-bar" class="side-bar" [ngClass]="{'opened':isOpened}" #sideBar>
+    <div id="accordion">
+        <div class="side-filters-col">
+            <div class="arrw2 side-filters-title">
+                <a class="collapsed" role="button" (click)="collapse1.toggle()">
+                    <img src="../assets/images/menu-ico-1.png" alt=""> Masters
+                </a>
+            </div>
+            <div id="collapse-1" class="collapse1" [ngbCollapse]="true" #collapse1="ngbCollapse">
+                <ul class="menu-list-sub">
+                    <li><a [routerLink]="['/Master/Scheme']">Scheme Master</a></li>
+                    <li><a [routerLink]="['/Master/TOT']">TOT Master New</a></li>
+                    <li><a [routerLink]="['/Master/Canvas']">Canvas Master</a></li>
+                    <li><a [routerLink]="['/Master/SDR']">SDR Master</a></li>
+                    <li><a [routerLink]="['/Master/Item']">Item Master</a></li>
+                    <li><a [routerLink]="['/Master/Customer']">Customer Master</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="side-filters-col">
+            <div class="arrw2 side-filters-title">
+                <a class="collapsed" role="button" data-toggle="collapse" (click)="collapse2.toggle()" aria-expanded="false" aria-controls="collapse-2">
+                    <img src="../assets/images/menu-ico-2.png" alt=""> SAP Reports
+                </a>
+            </div>
+            <div id="collapse-2" class="collapse" [ngbCollapse]="true" #collapse2="ngbCollapse" aria-labelledby="heading-1">
+
+                <ul class="menu-list-sub">
+                    <li><a [routerLink]="['/LandingPage']">Provision Report</a></li>
+                    <li><a [routerLink]="['/LandingPage']">Actualization Report</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-filters-col">
+            <div class="arrw2 side-filters-title">
+                <a class="collapsed" role="button" data-toggle="collapse" (click)="collapse3.toggle()" aria-expanded="false" aria-controls="collapse-3">
+                    <img src="../assets/images/menu-ico-3.png" alt=""> Dashboard & Reports
+                </a>
+            </div>
+            <div id="collapse-3" class="collapse" [ngbCollapse]="true" #collapse3="ngbCollapse" aria-labelledby="heading-1">
+
+                <ul class="menu-list-sub">
+                    <li><a [routerLink]="['/LandingPage']">Dashboard</a></li>
+                    <li><a [routerLink]="['/LandingPage']">Reports</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-filters-col">
+            <div class="arrw2 side-filters-title">
+                <a class="collapsed" role="button" data-toggle="collapse" (click)="collapse4.toggle()" aria-expanded="false" aria-controls="collapse-4">
+                    <img src="../assets/images/menu-ico-4.png" alt=""> Month End Activities
+                </a>
+            </div>
+            <div id="collapse-4" class="collapse" [ngbCollapse]="true" #collapse4="ngbCollapse" aria-labelledby="heading-1">
+
+                <ul class="menu-list-sub">
+                    <li><a [routerLink]="['/ApprovalWorkflow']">Approval Workflow</a></li>
+                    <li><a [routerLink]="['/LandingPage']">Provision Approval Trigger</a></li>
+                    <li><a [routerLink]="['/LandingPage']">Actual Approval Trigger</a></li>
+                    <li><a [routerLink]="['/LandingPage']">Month End Checklist</a></li>
+                    <li><a [routerLink]="['/LandingPage']">Year End Checklist</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-filters-col">
+            <div class="arrw2 side-filters-title">
+                <a class="collapsed" role="button" data-toggle="collapse" (click)="collapse5.toggle()" aria-expanded="false" aria-controls="collapse-5">
+                    <img src="../assets/images/menu-ico-5.png" alt=""> Audit Logs
+                </a>
+            </div>
+            <div id="collapse-5" class="collapse" [ngbCollapse]="true" #collapse5="ngbCollapse" aria-labelledby="heading-1">
+
+                <ul class="menu-list-sub">
+                    <li><a [routerLink]="['/LandingPage']">Appointment</a></li>
+                    <li><a [routerLink]="['/LandingPage']">Repair Order</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

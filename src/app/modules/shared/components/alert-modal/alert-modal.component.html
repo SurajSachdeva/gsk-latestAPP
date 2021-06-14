@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ heading }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="onCancel()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    <div class="message"> {{ message }}</div>
+
+</div>
+<div class="modal-footer text-center">
+    <button type=" button " class="btn" (click)="onCancel()">OK</button>
+</div>

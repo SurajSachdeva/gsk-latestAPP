@@ -1,0 +1,50 @@
+<div class="common-modal">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title">{{ title }}</div>
+        <button aria-label="Close" class="close" (click)="onCancel()" type="button">
+            <span aria-hidden="true">
+                <i class="las la-times"></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body mb-0">
+        <div class="user-form">
+            <form [formGroup]="brandRatioMasterForm" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+
+                    <div class="col-md-4 form-group">
+                        <label for="Brand_Code">Brand Code</label>
+                        <select class="custom-select" id="Brand_Code" formControlName="Brand_Code">
+                            <option value=''>Select</option>
+                            <option *ngFor="let item of brandCodeDropdown" [value]="item.Brand_Code">{{ item.Brand_Code }}</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Brand_Code','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="ENTITY">Entity</label>
+                        <select class="custom-select" id="ENTITY" formControlName="ENTITY">
+                            <option>Select</option>
+                            <option>Level 1</option>
+                            <option>Level 2</option>
+                        </select>
+                        <div *ngIf="shouldShowError('ENTITY','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="RATIO">Ratio</label>
+                        <input type="text" class="form-control" id="RATIO" formControlName="RATIO" placeholder="">
+                        <div *ngIf="shouldShowError('RATIO','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4 text-center cap-submit">
+                    <button type="submit" class="common-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

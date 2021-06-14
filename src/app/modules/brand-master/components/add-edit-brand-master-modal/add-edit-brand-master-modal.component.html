@@ -1,0 +1,64 @@
+<div class="common-modal">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title">{{ title }}</div>
+        <button aria-label="Close" class="close" (click)="onCancel()" type="button">
+            <span aria-hidden="true">
+                <i class="las la-times"></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body mb-0">
+        <div class="user-form">
+            <form [formGroup]="brandMasterForm" autocomplete="off" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+
+                    <div class="col-md-4 form-group">
+                        <label for="Brand_Code">Brand Code</label>
+                        <input type="text" id="Brand_Code" formControlName="Brand_Code" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('Brand_Code','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Brand_Description">Brand Desc</label>
+                        <input type="text" class="form-control" id="Brand_Description" formControlName="Brand_Description" placeholder="">
+                        <div *ngIf="shouldShowError('Brand_Description','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="SAP_Bison_Prod_Code">SAP Material Code</label>
+                        <input type="text" id="SAP_Bison_Prod_Code" class="form-control" formControlName="SAP_Bison_Prod_Code" placeholder="">
+                        <div *ngIf="shouldShowError('SAP_Bison_Prod_Code','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="SAP_Material_Code">SAP Bison Product Code</label>
+                        <input type="text" id="SAP_Material_Code" formControlName="SAP_Material_Code" class="form-control" placeholder="">
+                        <div *ngIf="shouldShowError('SAP_Material_Code','required')" class="text-danger">This field is required
+                        </div>
+                        <div *ngIf="shouldShowError('SAP_Material_Code','pattern')" class="text-danger">Only Numeric value is allowed
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Company_Code">Company Code</label>
+                        <select class="custom-select" id="Company_Code" formControlName="Company_Code">
+                            <option value="">Select</option>
+                            <option *ngFor="let item of companyCodeDropdown" [value]="item.Company_Code">{{ item.Company_Code }}</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Company_Code','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group mt-4 text-center cap-submit">
+                    <button type="submit" class="common-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

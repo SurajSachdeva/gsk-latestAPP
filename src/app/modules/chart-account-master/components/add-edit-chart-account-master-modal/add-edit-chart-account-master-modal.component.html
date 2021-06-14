@@ -1,0 +1,78 @@
+<div class="common-modal">
+    <div class="modal-header">
+        <div class="modal-title w-100 small-title">{{ title }}</div>
+        <button aria-label="Close" class="close" (click)="onCancel()" type="button">
+            <span aria-hidden="true">
+                <i class="las la-times"></i>
+            </span>
+        </button>
+    </div>
+    <div class="modal-body mb-0">
+        <div class="user-form">
+            <form [formGroup]="chartAccountMasterForm" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+
+                    <div class="col-md-4 form-group">
+                        <label for="Eventtype">Event Type</label>
+                        <select class="custom-select" id="Eventtype" formControlName="Eventtype">
+                            <option value="">Select</option>
+                            <option value="Provision">Provision</option>
+                            <option value="Actualization">Actualization</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Eventtype','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="Activity">Channel</label>
+                        <select class="custom-select" id="Activity" formControlName="Activity">
+                            <option value="">Select</option>
+                            <option  *ngFor="let item of channelDropdown" [value]="item.Channel">{{ item.Channel }}</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Activity','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 form-group">
+                        <label for="Expense_Type">Expense Type</label>
+                        <select class="custom-select" id="Expense_Type" formControlName="Expense_Type">
+                            <option value="">Select</option>
+                            <option  *ngFor="let item of expenseTypeDropdown" [value]="item.Expense_Type">{{ item.Expense_Type }}</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Expense_Type','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 form-group">
+                        <label for="Account_Type">Account Type</label>
+                        <select class="custom-select" id="Account_Type" formControlName="Account_Type">
+                            <option value="">Select</option>
+                            <option value="Debit">Debit</option>
+                            <option value="Credit">Credit</option>
+                        </select>
+                        <div *ngIf="shouldShowError('Account_Type','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="GL_Account_Code">GL Account Code</label>
+                        <select class="custom-select" id="GL_Account_Code" formControlName="GL_Account_Code">
+                            <option value="">Select</option>
+                            <option *ngFor="let item of glAccountCodeDropdown" [value]="item.GL_Account_Code">{{ item.GL_Account_Code }}</option>
+                        </select>
+                        <div *ngIf="shouldShowError('GL_Account_Code','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group mt-4 text-center cap-submit">
+                    <button type="submit" class="common-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

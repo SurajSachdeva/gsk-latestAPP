@@ -1,0 +1,109 @@
+<div class="main-wrapper" *ngIf="!showViewDetail">
+    <app-breadcrumb [data]="breadCrumbData" [showButtons]="true" [showUploadButton]="isPending || isRejected" (downloadExcel)="onExportToExcel()" (uploadExcel)="onUploadToExcel($event)"></app-breadcrumb>
+    <div class="container">
+        <div class="white-bg">
+            <app-landing-page-detail [pendingCount]="landingPageDetail.pendingCount" [pendingPath]="'/Provision/GT/Pending'" [approvedCount]="landingPageDetail.approvalCount" [approvedPath]="'/Provision/GT/Approved'" [activeCard]="status" [rejectedPath]="'/Provision/GT/Rejected'"
+                [rejectedCount]="landingPageDetail.rejectionCount">
+            </app-landing-page-detail>
+            <div class="dasboard-table">
+                <form [formGroup]="formGroup">
+                    <div class="table-responsive">
+                        <table class="table table-fixed">
+                            <thead>
+                                <tr class="" [ngClass]="{'approval-bg':isApproved ,'reject-bg':isRejected}">
+                                    <th class="w-1">WON ID</th>
+                                    <th class="w-2">Scheme Details</th>
+                                    <th class="w-3">
+                                        <select formControlName='region'>
+                                            <option value="">Region</option>
+                                            <option *ngFor="let item of regionDropdown" [value]="item">{{ item }}
+                                            </option>
+                                        </select>
+                                    </th>
+
+                                    <th class="w-4">
+                                        <select formControlName='brand'>
+                                            <option value="">Brand</option>
+                                            <option *ngFor="let item of brandDropdown" [value]="item">
+                                                {{ item }}
+                                            </option>
+                                        </select>
+                                    </th>
+                                    <th class="w-5">
+                                        <select formControlName='subChannel'>
+                                            <option value="">Sub Channel</option>
+                                            <option *ngFor="let item of subChannelDropdown" [value]="item">
+                                                {{ item }}
+                                            </option>
+                                        </select>
+                                    </th>
+                                    <th class="w-6">User Provision</th>
+                                    <th class="w-7">System Provision</th>
+                                    <th class="w-8">Difference</th>
+                                    <th class="w-9">
+                                        <span class="dropdown-toggle" (click)="datepicketStartDate.open()" aria-haspopup="true" aria-expanded="false">Scheme <br> Start Date</span>
+                                        <input class="form-control" formControlName='startDate' name="dp" style="visibility: hidden; height: 1px; margin-top: -10px;" ngbDatepicker #datepicketStartDate="ngbDatepicker" />
+                                    </th>
+                                    <th class="w-10">
+                                        <span class="dropdown-toggle" (click)="datepicketEndDate.open()" aria-haspopup="true" aria-expanded="false">Scheme <br> End Date</span>
+                                        <input class="form-control" formControlName='endDate' name="dp" style="visibility: hidden; height: 1px; margin-top: -10px;" ngbDatepicker #datepicketEndDate="ngbDatepicker" />
+                                    </th>
+                                    <th class="w-11">Sales</th>
+                                    <!-- <th class="w-12">Prov/Sales</th> -->
+                                    <th class="action-row">Action
+                                        <div class="custom-control custom-checkbox custom-table-checkbox" *ngIf="isPending" (click)="onApproveAll()">
+                                            <label class="custom-control-label label-check-all" [ngClass]="{'checked':isAllSelected()}"></label>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="font-strong" *ngIf="filteredData && filteredData.length">
+                                    <td colspan="5">Total</td>
+                                    <td>{{ getTotalUserProvison().toFixed(2) | mask: 'separator' : ',' }}</td>
+                                    <td>{{ getTotalSystemProvison().toFixed(2) | mask: 'separator' : ',' }}</td>
+                                    <td colspan="3">{{ getTotalDifferenceProvison().toFixed(2) | mask: 'separator' : ',' }}
+                                    </td>
+                                    <td colspan="3">{{ getTotalSale().toFixed(2) | mask: 'separator' : ',' }}</td>
+                                </tr>
+                                <tr class="approval-bg" *ngFor="let item of filteredData" [ngClass]="getRowClasses(item)">
+                                    <td>{{ item.WON_ID }}</td>
+                                    <td> {{ item.Scheme_Details }}</td>
+                                    <td>{{ item.Region }}</td>
+                                    <td>{{ item.Brand }}</td>
+                                    <td>{{ item.Sub_Channel }}</td>
+                                    <td>
+                                        <input *ngIf="isPending && item.HasPermission" type="number" (change)="onChangeUserProvision($event, item)" [value]="item.User_Provision" style="width: 100px; padding: 5px 0; padding-left: 5px;">
+                                        <ng-container *ngIf="isApproved || isRejected || !item.HasPermission"> {{ item.User_Provision | mask: 'separator' : ',' }}
+                                        </ng-container>
+                                    </td>
+                                    <td>{{ item.System_Provision | mask: 'separator' : ',' }}</td>
+                                    <td>{{ getDifference(item) | mask: 'separator' : ',' }}</td>
+                                    <td>{{ item.Scheme_StartDate | date: "dd-MM-yyyy" }}</td>
+                                    <td>{{ item.Scheme_EndDate | date: "dd-MM-yyyy" }}</td>
+                                    <td>{{ item.Sales | mask: 'separator' : ',' }}</td>
+                                    <!-- <td>{{ item.Region }}</td> -->
+                                    <td class="action-btn">
+                                        <div style="display: flex;justify-content: center;">
+                                            <img src="../assets/images/eye-icon.png" alt="" (click)="onViewDetail(item)">
+                                            <div class="custom-control custom-checkbox" *ngIf="item.HasPermission || isApproved" (click)="onApprove(item)">
+                                                <label class="custom-control-label label-check" [ngClass]="{ 'checked': item.RemarkType==='Approve' }"></label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox custom-crossbtn" *ngIf="(isPending && item.HasPermission) || (isRejected && item.HasPermission)" (click)="onReject(item)">
+                                                <label class="custom-control-label label-cross" [ngClass]="{'checked': item.RemarkType==='Reject' }"></label>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class=" submit-btn "><button type="submit " class="common-btn " (click)="onSubmit() ">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-provision-gt-view-detail [breadCrumbData]="breadCrumbData" [toleranceLimitIsValid]="checkToleranceLimitIsValid(currentViewDetailItem)" *ngIf="showViewDetail" [status]='status' (close)="closeViewDetail()" [gtData]="currentViewDetailItem"></app-provision-gt-view-detail>

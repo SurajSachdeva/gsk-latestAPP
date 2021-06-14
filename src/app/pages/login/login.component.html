@@ -1,0 +1,29 @@
+<div class="login-page">
+
+    <div class="inner-login-page">
+
+        <div class="logo"><img src="../../../assets/images/gsk-logo.png" alt=""></div>
+
+        <div class="login-sec">
+            <form class="login-form" name="cform" method="post" [formGroup]="loginForm">
+
+                <div class="form-group">
+                    <input class="form-control" formControlName="userName" placeholder="Username" type="text" name="Username" required>
+                    <div class="login-user-ico"><i class="las la-user"></i></div>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" formControlName="password" placeholder="Password" type="password" name="password" required>
+                    <div class="login-user-ico"><i class="las la-lock"></i></div>
+                </div>
+
+                <div class="form-group mb-0"><button type="button" class="common-btn" (click)="onLogin()">Login</button></div>
+
+            </form>
+        </div>
+
+        <div class="logo-footer">© 2001-2021 GlaxoSmithKline plc. All rights reserved.</div>
+
+    </div>
+
+</div>

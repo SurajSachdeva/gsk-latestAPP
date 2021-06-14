@@ -1,0 +1,62 @@
+<div class="main-wrapper">
+
+    <div class="breadcrum-btns">
+        <div class="container">
+            <div class="inner-breadcrum-btns">
+
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="las la-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#">Master</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Next Doc Number Master</li>
+                </ol>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="white-bg">
+
+            <div class="dasboard-table">
+
+                <div class="table-responsive">
+
+                    <table class="table table-fixed">
+                        <thead class="gray">
+                            <tr>
+                                <th>Type</th>
+                                <th>Company Code</th>
+                                <th>Doc Type</th>
+                                <th>Fiscal Year</th>
+                                <th>Next Number</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of data">
+                                <td>{{ item.A_Type }}</td>
+                                <td>{{ item.Company_Code }}</td>
+                                <td>{{ item.Doc_type }}</td>
+                                <td>{{ item.Fiscal_Year }}</td>
+                                <td>{{ item.Next_Number }}</td>
+                                <td>
+                                    <img (click)="onEdit()" src="./assets/images/edit.png" alt="">
+                                    <img (click)="onDelete()" class="ml-2" src="./assets/images/delete.png" alt="">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+            <div class="submit-btn">
+                <button type="button" (click)="onDownload()" class="common-btn"><i class="las la-download"></i> Download</button>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
