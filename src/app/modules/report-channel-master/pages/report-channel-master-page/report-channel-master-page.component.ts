@@ -60,18 +60,18 @@ export class ReportChannelMasterPageComponent implements OnInit {
     componentInstance.reportChannelMaster = dataItem;
     modalRef.result.then((data: ReportChannelMaster) => {
       if (data) {
-        // var model: InsertUpdateReportChannelMasterModel = {
-        //   MasterName: "REPORT_CHANNEL_MASTER",
-        //   Mode: "Update",
-        //   Channel_Group: data.Channel_Group,
-        //   D_ND: "abc",
-        //   R_Type: data.Type,
-        //   Report_Channel: data.Channel,
-        //   Sales_Group: data.Sales_Group
-        // }
-        // this.masterApi.saveMasterData(model).subscribe(responseData => {
-        //   this.getData();
-        // })
+        var model: InsertUpdateReportChannelMasterModel = {
+          MasterName: "REPORT_CHANNEL_MASTER",
+          Mode: "Update",
+          Channel_Group: data.Channel_Group,
+          D_ND: "abc",
+          R_Type: data.Type,
+          Report_Channel: data.Channel,
+          Sales_Group: data.Sales_Group,
+        }
+        this.masterApi.saveMasterData(model).subscribe(responseData => {
+          this.getData();
+        })
       }
     });
   }
@@ -80,19 +80,19 @@ export class ReportChannelMasterPageComponent implements OnInit {
     const modalRef = this.modalService.open(AddEditReportChannelMasterModalComponent, { size: "lg" });
     modalRef.result.then((data: ReportChannelMaster) => {
       if (data) {
-        // var model: InsertUpdateReportChannelMasterModel = {
-        //   MasterName: "REPORT_CHANNEL_MASTER",
-        //   Mode: "Insert",
-        //   Channel_Group: data.Channel_Group,
-        //   D_ND: "ad",
-        //   R_Type: data.Type,
-        //   Report_Channel: data.Channel,
-        //   Sales_Group: data.Sales_Group,
+        var model: InsertUpdateReportChannelMasterModel = {
+          MasterName: "REPORT_CHANNEL_MASTER",
+          Mode: "Insert",
+          Channel_Group: data.Channel_Group,
+          D_ND: "ad",
+          R_Type: data.Type,
+          Report_Channel: data.Channel,
+          Sales_Group: data.Sales_Group,
 
-        // }
-        // this.masterApi.saveMasterData(model).subscribe(responseData => {
-        //   this.getData();
-        // });
+        }
+        this.masterApi.saveMasterData(model).subscribe(responseData => {
+          this.getData();
+        });
       }
     });
   }

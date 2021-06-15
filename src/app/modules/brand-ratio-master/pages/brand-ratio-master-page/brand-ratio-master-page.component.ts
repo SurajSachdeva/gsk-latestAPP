@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MasterApi } from 'src/app/apis/master-api';
-import { BrandMaster, BrandRatioMaster, DeleteBrandMasterModel, InsertUpdateBrandMasterModel } from 'src/app/models/master';
+import { BrandMaster, BrandRatioMaster, DeleteBrandMasterModel, InsertUpdateBrandMasterModel, InsertUpdateBrandRatioMasterModel } from 'src/app/models/master';
 import { ConfirmationDialogModalComponent } from 'src/app/modules/shared/components/confirmation-dialog-modal/confirmation-dialog-modal.component';
 import { AppService } from 'src/app/services/app.service';
 import { AddEditBrandRatioMasterModalComponent } from '../../components/add-edit-brand-ratio-master-modal/add-edit-brand-ratio-master-modal.component';
@@ -53,18 +53,16 @@ export class BrandRatioMasterPageComponent implements OnInit {
     componentInstance.brandMaster = dataItem;
     modalRef.result.then((data: BrandRatioMaster) => {
       if (data) {
-        // var model: InsertUpdateBrandMasterModel = {
-        //   Brand_Code: data.Brand_Code,
-        //   Brand_Description: data.Brand_Description,
-        //   Company_Code: data.Company_Code,
-        //   MasterName: "BRAND_MASTER",
-        //   Mode: "Update",
-        //   SAP_Bison_Prod_Code: data.SAP_Bison_Prod_Code,
-        //   SAP_Material_Code: data.SAP_Material_Code
-        // }
-        // this.masterApi.saveMasterData(model).subscribe(responseData => {
-        //   this.getData();
-        // })
+        var model: InsertUpdateBrandRatioMasterModel = {
+          MasterName: "BRAND_RATIO_MASTER",
+          Mode: "Update",
+          Brand_Ratio_Code: dataItem.Brand_Code,
+          Entity: data.ENTITY,
+          Ratio: data.RATIO
+        }
+        this.masterApi.saveMasterData(model).subscribe(responseData => {
+          this.getData();
+        })
       }
     });
   }
@@ -73,13 +71,16 @@ export class BrandRatioMasterPageComponent implements OnInit {
     const modalRef = this.modalService.open(AddEditBrandRatioMasterModalComponent, { size: "lg" });
     modalRef.result.then((data: BrandRatioMaster) => {
       if (data) {
-        // var model: InsertUpdateBrandMasterModel = {
-        //   MasterName: "BRAND_MASTER",
-        //   Mode: "Insert",
-        // }
-        // this.masterApi.saveMasterData(model).subscribe(responseData => {
-        //   this.getData();
-        // });
+        var model: InsertUpdateBrandRatioMasterModel = {
+          MasterName: "BRAND_MASTER",
+          Mode: "Insert",
+          Brand_Ratio_Code: data.Brand_Code,
+          Entity: data.ENTITY,
+          Ratio: data.RATIO
+        }
+        this.masterApi.saveMasterData(model).subscribe(responseData => {
+          this.getData();
+        });
       }
     });
   }
@@ -87,8 +88,8 @@ export class BrandRatioMasterPageComponent implements OnInit {
   onDelete(dataItem: BrandRatioMaster) {
     const modalRef = this.modalService.open(ConfirmationDialogModalComponent, { size: "md", backdrop: "static" });
     var componentInstance = modalRef.componentInstance as ConfirmationDialogModalComponent;
-    componentInstance.heading = "Delete Brand";
-    componentInstance.message = "Are you sure you want to delete this brand master?";
+    componentInstance.heading = "Delete Brand Ratio";
+    componentInstance.message = "Are you sure you want to delete this brand ratio master?";
     modalRef.result.then((canDelete: boolean) => {
       if (canDelete) {
         var model: any = {

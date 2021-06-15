@@ -40,8 +40,8 @@ export class BusinessAreaMasterPageComponent implements OnInit {
         "Business Description": x.Business_Description || "",
       }
     });
-    const headers = ["GL Account Code", "GL Acc Desc"];
-    this.appService.exportAsExcelFile(exportData, "GL-Code-Master", headers);
+    const headers = ["Business Area List", "Business Description"];
+    this.appService.exportAsExcelFile(exportData, "Business-Area-Master", headers);
   }
 
   onEdit(dataItem: BusinessAreaMaster) {

@@ -26,7 +26,12 @@
                         <div *ngIf="shouldShowError('Type','required')" class="text-danger">This field is required
                         </div>
                     </div>
-
+                    <div class="col-md-4 form-group">
+                        <label for="D_ND">D ND</label>
+                        <input type="text" class="form-control" id="D_ND" formControlName="D_ND">
+                        <div *ngIf="shouldShowError('D_ND','required')" class="text-danger">This field is required
+                        </div>
+                    </div>
                     <div class="col-md-4 form-group">
                         <label for="Sales_Group">Sales Group</label>
                         <input type="text" id="Sales_Group" class="form-control" formControlName="Sales_Group">

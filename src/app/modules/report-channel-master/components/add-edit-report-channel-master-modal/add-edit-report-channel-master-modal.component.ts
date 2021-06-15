@@ -23,9 +23,14 @@ export class AddEditReportChannelMasterModalComponent implements OnInit {
       this.formGroup.patchValue({
         Channel: this._reportChannelMaster.Channel,
         Type: this._reportChannelMaster.Type,
+        D_ND: this._reportChannelMaster.D_ND,
         Sales_Group: this._reportChannelMaster.Sales_Group,
         Channel_Group: this._reportChannelMaster.Channel_Group,
       });
+
+      this.formGroup.controls["Type"].disable();
+      this.formGroup.controls["Channel"].disable();
+      this.formGroup.controls["D_ND"].disable();
     }
   }
 
@@ -33,7 +38,8 @@ export class AddEditReportChannelMasterModalComponent implements OnInit {
     Channel: ['', [Validators.required]],
     Type: ['', [Validators.required]],
     Sales_Group: ['', [Validators.required]],
-    Channel_Group: ['', [Validators.required]]
+    Channel_Group: ['', [Validators.required]],
+    D_ND: ['', [Validators.required]]
   })
 
   constructor(
@@ -50,13 +56,14 @@ export class AddEditReportChannelMasterModalComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.formGroup.valid){
+    if (this.formGroup.valid) {
       this.activeModal.close(this.formGroup.value)
-    }else{
+    } else {
       this.formGroup.controls["Channel"].markAsTouched();
       this.formGroup.controls["Type"].markAsTouched();
       this.formGroup.controls["Sales_Group"].markAsTouched();
       this.formGroup.controls["Channel_Group"].markAsTouched();
+      this.formGroup.controls["D_ND"].markAsTouched();
     }
   }
   shouldShowError(controlName: string, errorName: string) {

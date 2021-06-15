@@ -13,7 +13,7 @@ export class AddEditCdtCityMasterModalComponent implements OnInit {
   private _cdtCityMaster: CDTCityMaster | undefined;
 
   get title(): string {
-    return this._cdtCityMaster ? "Edit Business Area Master" : "Add Business Area Master";
+    return this._cdtCityMaster ? "Edit CDT City" : "Add CDT City";
   }
 
   set cdtCityMaster(value: CDTCityMaster) {

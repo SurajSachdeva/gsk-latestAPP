@@ -27,6 +27,8 @@ export class AddEditBrandRatioMasterModalComponent implements OnInit {
         ENTITY: this._brandRatioMaster.ENTITY,
         RATIO: this._brandRatioMaster.RATIO
       });
+      this.brandRatioMasterForm.controls["Brand_Code"].disable();
+      this.brandRatioMasterForm.controls["ENTITY"].disable();
     }
   }
 

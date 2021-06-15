@@ -29,8 +29,9 @@
                     <div class="col-md-4 form-group">
                         <label for="Role">Role</label>
                         <select class="custom-select" id="Role" formControlName="Role">
-                            <option selected>Approver</option>
-                            <option>Viewer</option>
+                            <option value=''>Select</option>
+                            <option value='Approver'>Approver</option>
+                            <option value='Viewer'>Viewer</option>
                         </select>
                         <div *ngIf="shouldShowError('Role','required')" class="text-danger">
                             This field is required
@@ -48,7 +49,7 @@
                     <div class="col-md-4 form-group">
                         <label for="Level">Level</label>
                         <select class="custom-select" id="Level" formControlName="Level">
-                            <option selected>Level 1</option>
+                            <option>Level 1</option>
                             <option>Level 2</option>
                         </select>
                         <div *ngIf="shouldShowError('Level','required')" class="text-danger">
@@ -59,9 +60,9 @@
                     <div class="col-md-4 form-group">
                         <label for="Department">Department</label>
                         <select class="custom-select" id="Department" formControlName="Department">
-                            <option selected>Finance</option>
-                            <option>CMT</option>
-                            <option>Other</option>
+                            <option value="">Select</option>
+                            <option value="CMT">CMT</option>
+                            <option value="Finance">Finance</option>
                         </select>
                         <div *ngIf="shouldShowError('Department','required')" class="text-danger">
                             This field is required
@@ -84,13 +85,13 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 form-group">
+                    <!-- <div class="col-md-4 form-group">
                         <label for="inputname">User Group</label>
                         <select class="custom-select">
                             <option selected>Approver</option>
                             <option>Admin</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group mt-4 text-center cap-submit">
                     <button type="submit" class="common-btn">Submit</button>

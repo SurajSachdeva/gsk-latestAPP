@@ -252,6 +252,7 @@ export interface ReportChannelMaster {
     Type: string;
     Channel_Group: string;
     Sales_Group: string;
+    D_ND: string;
 }
 export interface MasterResponseModel {
     Brand_Master: BrandMaster[];
@@ -282,7 +283,7 @@ export interface MasterResponseModel {
 
 export interface SaveMasterBaseModel {
     Mode: "Insert" | "Update" | "Delete";
-    MasterName: "BRAND_MASTER" | "CANVAS_MASTER" | "CDT_RATE_MASTER" | "CHANNEL_MASTER" | "COMPANY_MASTER" | "GL_CODE_MASTER" | "USER_MASTER" | "BUSINESS_AREA_MASTER" | "CDT_CITY_MASTER" | "CHART_ACCOUNT_MASTER" | "SDR_MASTER" | "MTTOT_MASTER_NEW" | "MT_CUSTOMER_MASTER" | "REPORT_CHANNEL_MASTER" | "LINE_ITEM_MASTER" | "BRAND_RATIO_MASTER" | "CANVAS_CATEGORY_MST";
+    MasterName: "BRAND_MASTER" | "CANVAS_MASTER" | "CDT_RATE_MASTER" | "CHANNEL_MASTER" | "COMPANY_MASTER" | "GL_CODE_MASTER" | "USER_MASTER" | "BUSINESS_AREA_MASTER" | "CDT_CITY_MASTER" | "CHART_ACCOUNT_MASTER" | "SDR_MASTER" | "MTTOT_MASTER_NEW" | "MT_CUSTOMER_MASTER" | "REPORT_CHANNEL_MASTER" | "LINE_ITEM_MASTER" | "BRAND_RATIO_MASTER" | "CANVAS_CATEGORY_MST" | "LINE_ITEM_MASTER" | "NEXTDOC_MASTER" | "BRAND_RATIO_MASTER" | "CLAIM_CODE_MASTER";
 }
 
 export interface InsertUpdateBrandMasterModel extends SaveMasterBaseModel {
@@ -444,16 +445,53 @@ export interface DeleteReportChannelMasterModel extends SaveMasterBaseModel {
     Report_Channel: string;
 }
 
-export interface InsertUpdateReportChannelMasterModel extends SaveMasterBaseModel {
-    Claim_Type: string;
-    Event_Type: string;
-    SAP_Reports: string;
-    Line_Item_Text_Format: string;
-}
 
 export interface DeleteUpdateReportChannelMasterModel extends SaveMasterBaseModel {
     Claim_Type: string;
     Event_Type: string;
     SAP_Reports: string;
     Line_Item_Text_Format: string;
+}
+
+export interface InsertUpdateLineItemMasterModel extends SaveMasterBaseModel {
+    Claim_Type: string;
+    Event_Type: string
+    SAP_Reports: string
+    Line_Item_Text_Format: string;
+}
+
+export interface DeleteLineItemMasterModel extends SaveMasterBaseModel {
+    Claim_Type: string;
+    Event_Type: string
+    SAP_Reports: string
+}
+
+export interface InsertUpdateNextDocNumberMasterModel extends SaveMasterBaseModel {
+    A_Type: string;
+    NextDoc_Company_Code: string;
+    Doc_type: string;
+    Fiscal_Year: number
+    Next_Number: number;
+}
+
+export interface DeleteNextDocNumberMasterModel extends SaveMasterBaseModel {
+    NextDoc_Company_Code: string;
+    Doc_type: string;
+    Fiscal_Year: number
+}
+
+export interface InsertUpdateBrandRatioMasterModel extends SaveMasterBaseModel {
+    Entity: string,
+    Brand_Ratio_Code: string,
+    Ratio: number
+}
+
+export interface DeleteClaimCodeMasterModel extends SaveMasterBaseModel {
+    CHANNEL_CLAIM: string;
+    CC_ENTITY: string;
+    CC_TYPE: string;
+    SUB_TYPE: string;
+}
+export interface InsertUpdateClaimCodeMasterModel extends DeleteClaimCodeMasterModel {
+    CC_CODE: string;
 }

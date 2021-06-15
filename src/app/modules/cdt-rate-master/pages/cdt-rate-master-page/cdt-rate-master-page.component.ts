@@ -37,7 +37,7 @@ export class CdtRateMasterPageComponent implements OnInit {
     const exportData = this.data.map(x => {
       return {
         "Category": x.Category || '',
-        "Rate": x.Rate || "",
+        "Rate": x.Rate || 0,
       }
     });
     const headers = ["Category", "Rate"];

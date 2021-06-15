@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MasterApi } from 'src/app/apis/master-api';
-import { LineItemMaster } from 'src/app/models/master';
+import { DeleteLineItemMasterModel, InsertUpdateLineItemMasterModel, LineItemMaster } from 'src/app/models/master';
 import { ConfirmationDialogModalComponent } from 'src/app/modules/shared/components/confirmation-dialog-modal/confirmation-dialog-modal.component';
 import { AppService } from 'src/app/services/app.service';
 import { AddEditLineItemMasterModalComponent } from '../../components/add-edit-line-item-master-modal/add-edit-line-item-master-modal.component';
@@ -53,61 +53,61 @@ export class LineItemMasterPageComponent implements OnInit {
   onEdit(dataItem: LineItemMaster) {
     const modalRef = this.modalService.open(AddEditLineItemMasterModalComponent, { size: "lg" });
     var componentInstance = modalRef.componentInstance as AddEditLineItemMasterModalComponent;
-    // componentInstance.brandMaster = dataItem;
+    componentInstance.lineItemMaster = dataItem;
     modalRef.result.then((data: LineItemMaster) => {
-      // if (data) {
-      //   var model: InsertUpdateBrandMasterModel = {
-      //     Brand_Code: data.Brand_Code,
-      //     Brand_Description: data.Brand_Description,
-      //     Company_Code: data.Company_Code,
-      //     MasterName: "BRAND_MASTER",
-      //     Mode: "Update",
-      //     SAP_Bison_Prod_Code: data.SAP_Bison_Prod_Code,
-      //     SAP_Material_Code: data.SAP_Material_Code
-      //   }
-      //   this.masterApi.saveMasterData(model).subscribe(responseData => {
-      //     this.getData();
-      //   })
-      // }
+      if (data) {
+        var model: InsertUpdateLineItemMasterModel = {
+          Mode: "Update",
+          MasterName: "LINE_ITEM_MASTER",
+          Claim_Type: dataItem.Claim_Type,
+          Event_Type: dataItem.Event_Type,
+          Line_Item_Text_Format: data.Line_Item_Text_Format,
+          SAP_Reports: dataItem.SAP_Reports
+        }
+        this.masterApi.saveMasterData(model).subscribe(responseData => {
+          this.getData();
+        })
+      }
     });
   }
 
   onAdd() {
     const modalRef = this.modalService.open(AddEditLineItemMasterModalComponent, { size: "lg" });
     modalRef.result.then((data: LineItemMaster) => {
-      // if (data) {
-      //   var model: InsertUpdateBrandMasterModel = {
-      //     Brand_Code: data.Brand_Code,
-      //     Brand_Description: data.Brand_Description,
-      //     Company_Code: data.Company_Code,
-      //     MasterName: "BRAND_MASTER",
-      //     Mode: "Insert",
-      //     SAP_Bison_Prod_Code: data.SAP_Bison_Prod_Code,
-      //     SAP_Material_Code: data.SAP_Material_Code
-      //   }
-      //   this.masterApi.saveMasterData(model).subscribe(responseData => {
-      //     this.getData();
-      //   });
-      // }
+      if (data) {
+        var model: InsertUpdateLineItemMasterModel = {
+          Mode: "Insert",
+          MasterName: "LINE_ITEM_MASTER",
+          Claim_Type: data.Claim_Type,
+          Event_Type: data.Event_Type,
+          Line_Item_Text_Format: data.Line_Item_Text_Format,
+          SAP_Reports: data.SAP_Reports
+        }
+        this.masterApi.saveMasterData(model).subscribe(responseData => {
+          this.getData();
+        })
+      }
     });
   }
 
   onDelete(dataItem: LineItemMaster) {
     const modalRef = this.modalService.open(ConfirmationDialogModalComponent, { size: "md", backdrop: "static" });
     var componentInstance = modalRef.componentInstance as ConfirmationDialogModalComponent;
-    componentInstance.heading = "Delete Brand";
-    componentInstance.message = "Are you sure you want to delete this brand master?";
+    componentInstance.heading = "Delete Line Item Master";
+    componentInstance.message = "Are you sure you want to delete this Line Item Master?";
     modalRef.result.then((canDelete: boolean) => {
-      // if (canDelete) {
-      //   var model: DeleteBrandMasterModel = {
-      //     Brand_Code: dataItem.Brand_Code,
-      //     MasterName: "BRAND_MASTER",
-      //     Mode: "Delete",
-      //   }
-      //   this.masterApi.saveMasterData(model).subscribe(data => {
-      //     this.getData();
-      //   });
-      // }
+      if (canDelete) {
+        var model: DeleteLineItemMasterModel = {
+          Mode: "Delete",
+          MasterName: "LINE_ITEM_MASTER",
+          Claim_Type: dataItem.Claim_Type,
+          Event_Type: dataItem.Event_Type,
+          SAP_Reports: dataItem.SAP_Reports
+        }
+        this.masterApi.saveMasterData(model).subscribe(data => {
+          this.getData();
+        });
+      }
     });
   }
 }

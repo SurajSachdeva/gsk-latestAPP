@@ -17,7 +17,8 @@
                         <label for="Brand_Code">Brand Code</label>
                         <select class="custom-select" id="Brand_Code" formControlName="Brand_Code">
                             <option value=''>Select</option>
-                            <option *ngFor="let item of brandCodeDropdown" [value]="item.Brand_Code">{{ item.Brand_Code }}</option>
+                            <option *ngFor="let item of brandCodeDropdown" [value]="item.Brand_Code">{{ item.Brand_Code
+                                }}</option>
                         </select>
                         <div *ngIf="shouldShowError('Brand_Code','required')" class="text-danger">This field is required
                         </div>
@@ -26,13 +27,14 @@
                     <div class="col-md-4 form-group">
                         <label for="ENTITY">Entity</label>
                         <select class="custom-select" id="ENTITY" formControlName="ENTITY">
-                            <option>Select</option>
-                            <option>Level 1</option>
-                            <option>Level 2</option>
+                            <option value="">Select</option>
+                            <option value="PCL">Level 1</option>
+                            <option value="CPL">Level 2</option>
                         </select>
                         <div *ngIf="shouldShowError('ENTITY','required')" class="text-danger">This field is required
                         </div>
                     </div>
+
                     <div class="col-md-4 form-group">
                         <label for="RATIO">Ratio</label>
                         <input type="text" class="form-control" id="RATIO" formControlName="RATIO" placeholder="">

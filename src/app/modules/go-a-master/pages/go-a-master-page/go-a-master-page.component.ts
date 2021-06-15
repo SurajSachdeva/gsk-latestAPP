@@ -4,6 +4,7 @@ import { DeleteGoAMasterModel, GoAMaster, InsertGoAMasterModel, UpdateGoAMasterM
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddEditGoAMasterModalComponent } from '../../components/add-edit-go-a-master-modal/add-edit-go-a-master-modal.component';
 import { ConfirmationDialogModalComponent } from 'src/app/modules/shared/components/confirmation-dialog-modal/confirmation-dialog-modal.component';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-go-a-master-page',
@@ -17,7 +18,8 @@ export class GoAMasterPageComponent implements OnInit {
   constructor(
     private masterApi: MasterApi,
     private cd: ChangeDetectorRef,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private appService:AppService
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +34,23 @@ export class GoAMasterPageComponent implements OnInit {
       }
     });
   }
-
+  onDownload(){
+    const exportData = this.data.map(x => {
+      return {
+        "MudId": x.MudID || '',
+        "User Name":x.UserName,
+        "Role":x.Role,
+        "EmailId": x.EmailId || "",
+        "Level": x.Level || "",
+        "Department": x.Department || "",
+        "Slab Start": x.SlabStart || '',
+        "Slab End":x.SlabEnd || "",
+        "Is Active":x.Is_Active?"Y":"N"
+      }
+    });
+    const headers = ["MudId", "User Name", "Role", "EmailId", "Level","Department","Slab Start","Slab End","Is Active"];
+    this.appService.exportAsExcelFile(exportData, "GoA-Master", headers);
+  }
   onEdit(dataItem: GoAMaster) {
     const modalRef = this.modalService.open(AddEditGoAMasterModalComponent, { size: "lg" });
     var componentInstance = modalRef.componentInstance as AddEditGoAMasterModalComponent;
@@ -80,8 +98,8 @@ export class GoAMasterPageComponent implements OnInit {
   onDelete(dataItem: GoAMaster) {
     const modalRef = this.modalService.open(ConfirmationDialogModalComponent, { size: "md", backdrop: "static" });
     var componentInstance = modalRef.componentInstance as ConfirmationDialogModalComponent;
-    componentInstance.heading = "Delete GL Code";
-    componentInstance.message = "Are you sure you want to delete this GL Code master?";
+    componentInstance.heading = "Delete GoA Master";
+    componentInstance.message = "Are you sure you want to delete this GoA Master?";
     modalRef.result.then((canDelete: boolean) => {
       if (canDelete) {
         var model: DeleteGoAMasterModel = {

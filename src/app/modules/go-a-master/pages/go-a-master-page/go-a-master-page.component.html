@@ -28,7 +28,6 @@
                                 <th class="w-1">Department</th>
                                 <th class="w-7">Slab Start</th>
                                 <th class="w-8">Slab End</th>
-                                <th class="w-11">User Group</th>
                                 <th class="w-3">Is Active</th>
                                 <th class="w-1">Edit</th>
 
@@ -45,7 +44,6 @@
                                 <td>{{ item.Department }}</td>
                                 <td>{{ item.SlabStart }}</td>
                                 <td>{{ item.SlabEnd }}</td>
-                                <td></td>
                                 <td>{{ item.Is_Active ? 'Y':'N' }}</td>
                                 <td>
                                     <img (click)="onEdit(item)" src="./assets/images/edit.png" alt="">
@@ -64,6 +62,8 @@
             <div class="submit-btn">
                 <button type="button" (click)="onAdd()" class="common-btn gray"><i class="las la-plus"></i>Add
                     User</button>
+                <button type="button" (click)="onDownload()" class="common-btn"><i class="las la-download"></i>
+                        Download</button>
             </div>
 
         </div>

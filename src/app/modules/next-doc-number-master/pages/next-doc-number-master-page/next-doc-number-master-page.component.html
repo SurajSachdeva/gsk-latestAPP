@@ -40,8 +40,8 @@
                                 <td>{{ item.Fiscal_Year }}</td>
                                 <td>{{ item.Next_Number }}</td>
                                 <td>
-                                    <img (click)="onEdit()" src="./assets/images/edit.png" alt="">
-                                    <img (click)="onDelete()" class="ml-2" src="./assets/images/delete.png" alt="">
+                                    <img (click)="onEdit(item)" src="./assets/images/edit.png" alt="">
+                                    <img (click)="onDelete(item)" class="ml-2" src="./assets/images/delete.png" alt="">
                                 </td>
                             </tr>
                         </tbody>
@@ -52,6 +52,8 @@
             </div>
 
             <div class="submit-btn">
+                <button type="button" (click)="onAdd()" class="common-btn gray"><i class="las la-plus"></i>Add
+                    </button>
                 <button type="button" (click)="onDownload()" class="common-btn"><i class="las la-download"></i> Download</button>
             </div>
 

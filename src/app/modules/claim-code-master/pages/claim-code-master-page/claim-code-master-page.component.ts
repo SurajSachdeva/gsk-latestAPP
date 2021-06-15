@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MasterApi } from 'src/app/apis/master-api';
-import { ClaimCodeMaster } from 'src/app/models/master';
+import { ClaimCodeMaster, DeleteClaimCodeMasterModel, InsertUpdateClaimCodeMasterModel } from 'src/app/models/master';
 import { ConfirmationDialogModalComponent } from 'src/app/modules/shared/components/confirmation-dialog-modal/confirmation-dialog-modal.component';
 import { AppService } from 'src/app/services/app.service';
 import { AddEditClaimCodeMasterModalComponent } from '../../components/add-edit-claim-code-master-modal/add-edit-claim-code-master-modal.component';
@@ -45,68 +45,71 @@ export class ClaimCodeMasterPageComponent implements OnInit {
         "Code": x.Code || ''
       }
     });
-    const headers = ["Channel", "Entity", "SAP Bison Prod Code", "SAP Material Code", "Company Code"];
-    this.appService.exportAsExcelFile(exportData, "Brand-Master", headers);
+    const headers = ["Channel", "Entity", "Type", "Sub Type", "Code"];
+    this.appService.exportAsExcelFile(exportData, "Claim-Code-Master", headers);
   }
 
   onEdit(dataItem: ClaimCodeMaster) {
     const modalRef = this.modalService.open(AddEditClaimCodeMasterModalComponent, { size: "lg" });
     var componentInstance = modalRef.componentInstance as AddEditClaimCodeMasterModalComponent;
-    // componentInstance.brandMaster = dataItem;
+    componentInstance.claimCodeMaster = dataItem;
     modalRef.result.then((data: ClaimCodeMaster) => {
-      // if (data) {
-      //   var model: InsertUpdateBrandMasterModel = {
-      //     Brand_Code: data.Brand_Code,
-      //     Brand_Description: data.Brand_Description,
-      //     Company_Code: data.Company_Code,
-      //     MasterName: "BRAND_MASTER",
-      //     Mode: "Update",
-      //     SAP_Bison_Prod_Code: data.SAP_Bison_Prod_Code,
-      //     SAP_Material_Code: data.SAP_Material_Code
-      //   }
-      //   this.masterApi.saveMasterData(model).subscribe(responseData => {
-      //     this.getData();
-      //   })
-      // }
+      if (data) {
+        var model: InsertUpdateClaimCodeMasterModel = {
+          MasterName: "CLAIM_CODE_MASTER",
+          Mode: "Update",
+          CC_ENTITY: dataItem.Entity,
+          CC_TYPE: dataItem.Type,
+          SUB_TYPE: dataItem.Sub_Type,
+          CHANNEL_CLAIM: dataItem.Channel,
+          CC_CODE: data.Code
+        }
+        this.masterApi.saveMasterData(model).subscribe(responseData => {
+          this.getData();
+        })
+      }
     });
   }
 
   onAdd() {
     const modalRef = this.modalService.open(AddEditClaimCodeMasterModalComponent, { size: "lg" });
     modalRef.result.then((data: ClaimCodeMaster) => {
-      // if (data) {
-      //   var model: InsertUpdateBrandMasterModel = {
-      //     Brand_Code: data.Brand_Code,
-      //     Brand_Description: data.Brand_Description,
-      //     Company_Code: data.Company_Code,
-      //     MasterName: "BRAND_MASTER",
-      //     Mode: "Insert",
-      //     SAP_Bison_Prod_Code: data.SAP_Bison_Prod_Code,
-      //     SAP_Material_Code: data.SAP_Material_Code
-      //   }
-      //   this.masterApi.saveMasterData(model).subscribe(responseData => {
-      //     this.getData();
-      //   });
-      // }
+      if (data) {
+        var model: InsertUpdateClaimCodeMasterModel = {
+          MasterName: "CLAIM_CODE_MASTER",
+          Mode: "Insert",
+          CC_ENTITY: data.Entity,
+          CC_TYPE: data.Type,
+          SUB_TYPE: data.Sub_Type,
+          CHANNEL_CLAIM: data.Channel,
+          CC_CODE: data.Code
+        }
+        this.masterApi.saveMasterData(model).subscribe(responseData => {
+          this.getData();
+        });
+      }
     });
   }
 
   onDelete(dataItem: ClaimCodeMaster) {
     const modalRef = this.modalService.open(ConfirmationDialogModalComponent, { size: "md", backdrop: "static" });
     var componentInstance = modalRef.componentInstance as ConfirmationDialogModalComponent;
-    componentInstance.heading = "Delete Brand";
-    componentInstance.message = "Are you sure you want to delete this brand master?";
+    componentInstance.heading = "Delete Claim Code Master";
+    componentInstance.message = "Are you sure you want to delete this Claim Code master?";
     modalRef.result.then((canDelete: boolean) => {
-      // if (canDelete) {
-      //   var model: DeleteBrandMasterModel = {
-      //     Brand_Code: dataItem.Brand_Code,
-      //     MasterName: "BRAND_MASTER",
-      //     Mode: "Delete",
-      //   }
-      //   this.masterApi.saveMasterData(model).subscribe(data => {
-      //     this.getData();
-      //   });
-      // }
+      if (canDelete) {
+        var model: DeleteClaimCodeMasterModel = {
+          MasterName: "CLAIM_CODE_MASTER",
+          Mode: "Delete",
+          CC_ENTITY: dataItem.Entity,
+          CC_TYPE: dataItem.Type,
+          SUB_TYPE: dataItem.Sub_Type,
+          CHANNEL_CLAIM: dataItem.Channel
+        }
+        this.masterApi.saveMasterData(model).subscribe(data => {
+          this.getData();
+        });
+      }
     });
   }
 }

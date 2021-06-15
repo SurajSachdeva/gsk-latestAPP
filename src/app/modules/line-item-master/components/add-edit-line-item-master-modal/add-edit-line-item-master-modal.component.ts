@@ -28,6 +28,9 @@ export class AddEditLineItemMasterModalComponent implements OnInit {
         SAP_Reports: this._lineItemMaster.SAP_Reports,
         Line_Item_Text_Format: this._lineItemMaster.Line_Item_Text_Format
       });
+      this.formGroup.controls["Claim_Type"].disable();
+      this.formGroup.controls["Event_Type"].disable();
+      this.formGroup.controls["SAP_Reports"].disable();
     }
   }
 

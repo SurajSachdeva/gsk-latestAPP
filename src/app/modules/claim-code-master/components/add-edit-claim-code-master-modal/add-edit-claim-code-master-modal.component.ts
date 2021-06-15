@@ -27,6 +27,10 @@ export class AddEditClaimCodeMasterModalComponent implements OnInit {
         Sub_Type: this._claimCodeMaster.Sub_Type,
         Code: this._claimCodeMaster.Code,
       });
+      this.claimCodeMasterForm.controls["Channel"].disable();
+      this.claimCodeMasterForm.controls["Entity"].disable();
+      this.claimCodeMasterForm.controls["Type"].disable();
+      this.claimCodeMasterForm.controls["Sub_Type"].disable();
     }
   }
 
@@ -55,11 +59,11 @@ export class AddEditClaimCodeMasterModalComponent implements OnInit {
     if(this.claimCodeMasterForm.valid){
       this.activeModal.close(this.claimCodeMasterForm.value)
     }else{
-      this.claimCodeMasterForm.controls["CHANNEL"].markAsTouched();
-      this.claimCodeMasterForm.controls["ENTITY"].markAsTouched();
-      this.claimCodeMasterForm.controls["TYPE"].markAsTouched();
-      this.claimCodeMasterForm.controls["SUB_TYPE"].markAsTouched();
-      this.claimCodeMasterForm.controls["CODE"].markAsTouched();
+      this.claimCodeMasterForm.controls["Channel"].markAsTouched();
+      this.claimCodeMasterForm.controls["Entity"].markAsTouched();
+      this.claimCodeMasterForm.controls["Type"].markAsTouched();
+      this.claimCodeMasterForm.controls["Sub_Type"].markAsTouched();
+      this.claimCodeMasterForm.controls["Code"].markAsTouched();
     }
   }
   shouldShowError(controlName: string, errorName: string) {

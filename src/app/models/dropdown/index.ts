@@ -16,6 +16,7 @@ export interface CanvasCategoryMasterDropdownModel {
 export interface LineItemMasterDropdownModel {
     Expense_Type: string;
 }
+
 export interface DropdownResponseModel {
     BRAND_MASTER: BrandMasterDropdownModel[];
     BRAND_RATIO_MASTER: BrandRatioMasterDropdownModel[];
